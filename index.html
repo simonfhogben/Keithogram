@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>The Keithogram Challenge</title>
+<meta name="description" content="A weekly Ladygram-inspired cryptic puzzle. Tea recommended. Dictionary optional." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,900&family=Spectral:ital,wght@0,400;0,500;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+  /* ============================================================
+     THE KEITHOGRAM CHALLENGE
+     A traditional British puzzle club. Maritime. Gently absurd.
+     Palette: Admiralty navy, brass gold, chart cream.
+     ============================================================ */
+  :root{
+    --navy:#0A1B2E;
+    --navy-panel:#102740;
+    --navy-raised:#153050;
+    --line:#254a6d;
+    --gold:#C8A24B;
+    --gold-bright:#E7C878;
+    --cream:#EFE6D0;
+    --cream-dim:#A9A891;
+    --red:#B4564A;
+    --green:#7FA06A;
+    --shadow:0 18px 50px -20px rgba(0,0,0,.7);
+    --fs:1;            /* font-scale, adjusted by A- / A+ */
+    --ink: 'Spectral', Georgia, 'Times New Roman', serif;
+    --disp: 'Fraunces', Georgia, serif;
+    --mono: 'IBM Plex Mono', ui-monospace, monospace;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{
+    background:
+      radial-gradient(1200px 600px at 50% -8%, #123351 0%, transparent 60%),
+      var(--navy);
+    color:var(--cream);
+    font-family:var(--ink);
+    font-size:calc(17px * var(--fs));
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+    padding-bottom:80px;
+  }
+  body.tea-time{ --fs:1.4; line-height:1.7; }
+  a{color:var(--gold-bright)}
+  ::selection{background:var(--gold);color:var(--navy)}
+
+  .wrap{max-width:940px;margin:0 auto;padding:0 20px}
+
+  /* ---------- Top control bar ---------- */
+  .toolbar{
+    position:sticky;top:0;z-index:40;
+    background:rgba(10,27,46,.9);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  .toolbar .wrap{display:flex;gap:14px;align-items:center;justify-content:space-between;padding-top:10px;padding-bottom:10px;flex-wrap:wrap}
+  .toolbar-group{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+  .who{font-family:var(--mono);font-size:.72em;letter-spacing:.05em;color:var(--cream-dim)}
+  .who b{color:var(--gold-bright);font-weight:500}
+  .btn{
+    font-family:var(--mono);font-size:.72em;letter-spacing:.06em;text-transform:uppercase;
+    background:transparent;color:var(--cream);
+    border:1px solid var(--line);border-radius:2px;
+    padding:7px 11px;cursor:pointer;transition:.15s;
+  }
+  .btn:hover{border-color:var(--gold);color:var(--gold-bright)}
+  .btn:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+  .btn.on{background:var(--gold);color:var(--navy);border-color:var(--gold);font-weight:500}
+  .btn-primary{background:var(--gold);color:var(--navy);border-color:var(--gold);font-weight:500}
+  .btn-primary:hover{background:var(--gold-bright);color:var(--navy)}
+  .fontset{display:flex;align-items:center;gap:0;border:1px solid var(--line);border-radius:2px;overflow:hidden}
+  .fontset button{border:0;border-radius:0;padding:7px 10px}
+  .fontset span{font-family:var(--mono);font-size:.66em;color:var(--cream-dim);padding:0 6px}
+
+  /* ---------- Masthead ---------- */
+  header.mast{position:relative;text-align:center;padding:46px 0 30px;overflow:hidden}
+  .compass{position:absolute;top:50%;left:50%;transform:translate(-50%,-46%);width:360px;height:360px;opacity:.06;pointer-events:none}
+  .eyebrow{font-family:var(--mono);text-transform:uppercase;letter-spacing:.42em;font-size:.66em;color:var(--gold);margin:0 0 14px;padding-left:.42em}
+  h1.title{
+    font-family:var(--disp);font-weight:900;font-optical-sizing:auto;
+    font-size:clamp(2.7rem,8vw,5rem);line-height:.94;margin:0;
+    color:var(--cream);letter-spacing:-.01em;
+  }
+  h1.title .amp{color:var(--gold);font-style:italic;font-weight:400}
+  .rule{display:flex;align-items:center;gap:14px;justify-content:center;margin:20px auto 0;max-width:520px;color:var(--gold)}
+  .rule::before,.rule::after{content:"";height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);flex:1}
+  .rule svg{width:16px;height:16px;flex:none}
+  .keithism{font-style:italic;color:var(--cream-dim);margin:16px auto 0;max-width:560px;min-height:1.5em;font-size:1.04em}
+
+  /* ---------- Puzzle chrome ---------- */
+  .puzzlebar{display:flex;align-items:center;justify-content:space-between;gap:16px;margin:26px 0 8px;flex-wrap:wrap}
+  .puzzle-id{font-family:var(--disp);font-size:1.7em;font-weight:600}
+  .tier{font-family:var(--mono);font-size:.7em;letter-spacing:.14em;text-transform:uppercase;padding:4px 10px;border-radius:2px;border:1px solid currentColor}
+  .tier.gentle{color:var(--green)}
+  .tier.proper{color:var(--gold-bright)}
+  .tier.savage{color:var(--red)}
+  .nav{display:flex;gap:8px}
+
+  .placard{
+    background:linear-gradient(180deg,var(--navy-panel),var(--navy));
+    border:1px solid var(--line);border-radius:4px;
+    box-shadow:var(--shadow);
+    padding:22px 24px;margin-top:10px;
+  }
+  .placard h2{font-family:var(--disp);font-weight:600;font-size:1.15em;margin:0 0 4px;color:var(--gold-bright)}
+  .placard .sub{font-family:var(--mono);font-size:.68em;letter-spacing:.1em;text-transform:uppercase;color:var(--cream-dim);margin-bottom:14px}
+
+  /* ---------- Clues ---------- */
+  ol.clues{list-style:none;margin:0;padding:0}
+  .clue{
+    display:grid;grid-template-columns:34px 1fr;gap:4px 14px;align-items:start;
+    padding:14px 0;border-top:1px solid var(--line);
+  }
+  .clue:first-child{border-top:0}
+  .clue .num{font-family:var(--mono);color:var(--gold);font-size:.92em;padding-top:2px}
+  .clue .body .q{font-size:1.05em}
+  .clue .enu{color:var(--cream-dim);font-style:italic}
+  .answerline{grid-column:2;display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-top:9px}
+  .answerline input{
+    font-family:var(--mono);font-size:.92em;letter-spacing:.16em;text-transform:uppercase;
+    background:var(--navy);color:var(--cream);
+    border:1px solid var(--line);border-radius:2px;padding:8px 10px;min-width:180px;
+  }
+  .answerline input:focus{outline:2px solid var(--gold);outline-offset:1px;border-color:var(--gold)}
+  .answerline input.correct{border-color:var(--green);color:var(--green)}
+  .answerline input.wrong{border-color:var(--red)}
+  .mark{font-family:var(--mono);font-size:1.1em;width:1.2em;text-align:center}
+  .mark.correct{color:var(--green)}
+  .mark.wrong{color:var(--red)}
+  .reveal{grid-column:2;margin-top:8px;font-size:.95em;color:var(--cream-dim);border-left:2px solid var(--gold);padding-left:12px;display:none}
+  .reveal.show{display:block}
+  .reveal b{color:var(--gold-bright);font-weight:500;letter-spacing:.08em;font-family:var(--mono);font-size:.86em}
+
+  /* ---------- Hidden solution ---------- */
+  .hidden-box{margin-top:16px;border:1px dashed var(--line);border-radius:4px;padding:16px 18px;background:rgba(200,162,75,.04)}
+  .hidden-box .sub{margin-bottom:10px}
+  .cells{display:flex;gap:6px;flex-wrap:wrap;margin:8px 0 12px}
+  .cell{width:30px;height:36px;border:1px solid var(--line);border-radius:2px;display:grid;place-items:center;font-family:var(--mono);font-size:.95em;color:var(--gold-bright);background:var(--navy)}
+  .cell.filled{background:var(--navy-raised);border-color:var(--gold)}
+
+  /* ---------- Submit / verdict ---------- */
+  .actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}
+  .verdict{margin-top:20px;border-radius:4px;padding:20px 22px;border:1px solid var(--line);background:var(--navy-panel);display:none}
+  .verdict.show{display:block}
+  .verdict .score{font-family:var(--disp);font-size:2.4em;font-weight:900;line-height:1}
+  .verdict .score small{font-size:.4em;color:var(--cream-dim);font-weight:400;font-family:var(--mono)}
+  .verdict .award{font-family:var(--disp);font-style:italic;font-size:1.25em;color:var(--gold-bright);margin:6px 0}
+  .verdict .says{margin-top:8px}
+  .verdict .says .who{display:block;margin-bottom:2px}
+
+  /* ---------- Tabs / leaderboards ---------- */
+  section.board{margin-top:46px}
+  .tabs{display:flex;gap:8px;border-bottom:1px solid var(--line);flex-wrap:wrap}
+  .tab{font-family:var(--mono);font-size:.72em;letter-spacing:.08em;text-transform:uppercase;background:transparent;border:0;color:var(--cream-dim);padding:12px 14px;cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-1px}
+  .tab.on{color:var(--gold-bright);border-bottom-color:var(--gold)}
+  .panel{display:none;padding-top:6px}
+  .panel.on{display:block}
+  table{width:100%;border-collapse:collapse;font-size:.95em}
+  th,td{text-align:left;padding:10px 10px;border-bottom:1px solid var(--line)}
+  th{font-family:var(--mono);font-size:.66em;letter-spacing:.1em;text-transform:uppercase;color:var(--cream-dim);font-weight:400}
+  td.n{font-family:var(--mono);color:var(--gold)}
+  tr.me td{background:rgba(200,162,75,.07)}
+  tr.keith td{color:var(--gold-bright)}
+  .champ{font-style:italic;color:var(--cream-dim);margin:14px 0 4px}
+  .empty{color:var(--cream-dim);font-style:italic;padding:18px 4px}
+
+  h3.section{font-family:var(--disp);font-weight:600;font-size:1.5em;margin:0 0 2px}
+  .section-sub{font-family:var(--mono);font-size:.66em;letter-spacing:.1em;text-transform:uppercase;color:var(--cream-dim);margin-bottom:14px}
+
+  footer{margin-top:56px;padding-top:22px;border-top:1px solid var(--line);color:var(--cream-dim);font-size:.85em;text-align:center}
+  footer .rule{margin-bottom:16px}
+
+  /* ---------- Name dialog ---------- */
+  dialog{border:1px solid var(--gold);background:var(--navy-panel);color:var(--cream);border-radius:6px;max-width:440px;padding:0;box-shadow:var(--shadow)}
+  dialog::backdrop{background:rgba(4,10,18,.72)}
+  .dlg{padding:26px 26px 22px}
+  .dlg h2{font-family:var(--disp);margin:0 0 4px;color:var(--gold-bright)}
+  .dlg p{color:var(--cream-dim);margin:0 0 16px;font-size:.95em}
+  .dlg label{font-family:var(--mono);font-size:.66em;letter-spacing:.1em;text-transform:uppercase;color:var(--cream-dim);display:block;margin:12px 0 6px}
+  .dlg input,.dlg select{width:100%;font-family:var(--ink);font-size:1em;background:var(--navy);color:var(--cream);border:1px solid var(--line);border-radius:2px;padding:10px 12px}
+  .dlg .row{display:flex;gap:10px;margin-top:20px;justify-content:flex-end}
+
+  .toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%) translateY(20px);background:var(--navy-raised);border:1px solid var(--gold);color:var(--cream);padding:12px 18px;border-radius:3px;font-size:.9em;opacity:0;pointer-events:none;transition:.25s;z-index:60;box-shadow:var(--shadow)}
+  .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+  @media (max-width:560px){
+    .clue{grid-template-columns:26px 1fr}
+    .answerline input{min-width:140px}
+  }
+  @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+</head>
+<body>
+
+<!-- ===================== TOOLBAR ===================== -->
+<div class="toolbar">
+  <div class="wrap">
+    <div class="toolbar-group">
+      <span class="who">Aboard: <b id="whoName">—</b></span>
+      <button class="btn" id="changeName">Change</button>
+    </div>
+    <div class="toolbar-group">
+      <div class="fontset" role="group" aria-label="Text size">
+        <button class="btn" id="fontDown" aria-label="Smaller text">A&minus;</button>
+        <span>SIZE</span>
+        <button class="btn" id="fontUp" aria-label="Larger text">A+</button>
+      </div>
+      <button class="btn" id="teaTime" aria-pressed="false">Tea-Time Mode</button>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== MASTHEAD ===================== -->
+<header class="mast">
+  <svg class="compass" viewBox="0 0 100 100" aria-hidden="true">
+    <circle cx="50" cy="50" r="47" fill="none" stroke="#C8A24B" stroke-width="0.5"/>
+    <circle cx="50" cy="50" r="38" fill="none" stroke="#C8A24B" stroke-width="0.3"/>
+    <g stroke="#C8A24B" stroke-width="0.3">
+      <line x1="50" y1="3" x2="50" y2="97"/><line x1="3" y1="50" x2="97" y2="50"/>
+      <line x1="16" y1="16" x2="84" y2="84"/><line x1="84" y1="16" x2="16" y2="84"/>
+    </g>
+    <polygon points="50,6 55,50 50,50" fill="#C8A24B"/><polygon points="50,6 45,50 50,50" fill="#EFE6D0"/>
+    <polygon points="50,94 55,50 50,50" fill="#EFE6D0"/><polygon points="50,94 45,50 50,50" fill="#C8A24B"/>
+    <polygon points="6,50 50,45 50,50" fill="#EFE6D0"/><polygon points="6,50 50,55 50,50" fill="#C8A24B"/>
+    <polygon points="94,50 50,45 50,50" fill="#C8A24B"/><polygon points="94,50 50,55 50,50" fill="#EFE6D0"/>
+  </svg>
+  <div class="wrap">
+    <p class="eyebrow">The Weekly Cryptic &middot; Est. by Popular Demand</p>
+    <h1 class="title">The Keithogram<br><span class="amp">&</span> Challenge</h1>
+    <div class="rule" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 2v20M5 9l7-3 7 3M4 14h16"/></svg>
+    </div>
+    <p class="keithism" id="keithism">Tea recommended. Dictionary optional.</p>
+  </div>
+</header>
+
+<main class="wrap" id="app">
+  <!-- puzzle renders here -->
+</main>
+
+<!-- ===================== LEADERBOARDS ===================== -->
+<section class="board wrap">
+  <h3 class="section">The Records</h3>
+  <p class="section-sub">Kept meticulously &middot; Verified, eventually, at PJ's</p>
+  <div class="tabs" role="tablist">
+    <button class="tab on" data-panel="league" role="tab">Keith's League Table</button>
+    <button class="tab" data-panel="admiralty" role="tab">The Admiralty Board</button>
+    <button class="tab" data-panel="recent" role="tab">Recent Activity</button>
+  </div>
+
+  <div class="panel on" id="panel-league" role="tabpanel">
+    <p class="champ" id="champLine"></p>
+    <table>
+      <thead><tr><th>Rank</th><th>Name</th><th>Done</th><th>Avg</th><th>Best</th><th>Perfect</th></tr></thead>
+      <tbody id="leagueBody"></tbody>
+    </table>
+  </div>
+
+  <div class="panel" id="panel-admiralty" role="tabpanel">
+    <table>
+      <thead><tr><th>Rank</th><th>Name</th><th>Maritime</th><th>Rank &amp; Title</th></tr></thead>
+      <tbody id="admiraltyBody"></tbody>
+    </table>
+  </div>
+
+  <div class="panel" id="panel-recent" role="tabpanel">
+    <table>
+      <thead><tr><th>Name</th><th>Keithogram</th><th>Score</th><th>Bonus</th><th>Date</th></tr></thead>
+      <tbody id="recentBody"></tbody>
+    </table>
+  </div>
+</section>
+
+<footer class="wrap">
+  <div class="rule" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 2v20M5 9l7-3 7 3M4 14h16"/></svg></div>
+  <p>No Googling. Keith will know.<br>
+  <span style="font-size:.85em">The Keithogram Challenge &middot; a puzzle club of one, open to all.</span></p>
+</footer>
+
+<!-- ===================== NAME DIALOG ===================== -->
+<dialog id="nameDlg">
+  <div class="dlg">
+    <h2>Sign the Ship's Book</h2>
+    <p>No passwords, no email. A name is all the Admiralty requires. It is remembered on this device only.</p>
+    <div id="existingWrap" style="display:none">
+      <label for="existingSel">Returning solver</label>
+      <select id="existingSel"></select>
+    </div>
+    <label for="newName">New name</label>
+    <input id="newName" maxlength="24" placeholder="e.g. Keith" autocomplete="off" />
+    <div class="row">
+      <button class="btn" id="nameCancel">Cancel</button>
+      <button class="btn btn-primary" id="nameSave">Come Aboard</button>
+    </div>
+  </div>
+</dialog>
+
+<div class="toast" id="toast"></div>
+
+<script>
+/* ================================================================
+   THE KEITHOGRAM CHALLENGE — engine
+   Pure vanilla JS. Works fully on GitHub Pages.
+   Leaderboard: posts to a Google Apps Script Web App if configured
+   (CONFIG.endpoint), otherwise falls back to on-device storage.
+   ================================================================ */
+
+/* ---- CONFIG: paste your Apps Script Web App URL here after deploy ---- */
+const CONFIG = {
+  endpoint: "",           // e.g. "https://script.google.com/macros/s/AKfy.../exec"  (leave "" for local-only)
+  keithBaseline: true     // seed "Keith" onto the boards so there is always a champion to chase
+};
+
+/* ---------- storage shim (localStorage may be blocked in some sandboxes) ---------- */
+const store = (()=>{
+  let ok=true; try{ const k="__k_test"; localStorage.setItem(k,"1"); localStorage.removeItem(k);}catch(e){ok=false;}
+  const mem={};
+  return {
+    get:(k)=>{ try{ return ok?localStorage.getItem(k):(mem[k]??null);}catch(e){return mem[k]??null;} },
+    set:(k,v)=>{ try{ ok?localStorage.setItem(k,v):(mem[k]=v);}catch(e){mem[k]=v;} }
+  };
+})();
+
+/* ---------- normalisation for answer checking (case / spacing / punctuation tolerant) ---------- */
+const norm = s => (s||"").toString().toUpperCase().replace(/[^A-Z0-9]/g,"");
+
+/* ================================================================
+   PUZZLE DATA
+   Each Keithogram: 10 main clues (League) + 3 bonus (Admiralty).
+   The initial letters of the 10 main answers spell the HIDDEN word.
+   `answers` is an array — first entry is shown on reveal; any entry
+   is accepted (allow common variants).
+   ================================================================ */
+const KEITHOGRAMS = [
+  {
+    id:1, tier:"Gentle",
+    hidden:{ answer:"LIGHTHOUSE", hint:"Read the first letter of each of the ten answers, in order." },
+    clues:[
+      {n:1, q:"Freedom to act, or your position north or south of the equator.", enu:"(8)", answers:["LATITUDE"],
+       ex:"Double definition: latitude = freedom / leeway, and latitude = a map position."},
+      {n:2, q:"Exists ashore, as Alderney does.", enu:"(6)", answers:["ISLAND"],
+       ex:"IS (exists) + LAND (ashore) = ISLAND."},
+      {n:3, q:"Old sailing ship concealed by Portugal, Leonora and the rest.", enu:"(7)", answers:["GALLEON"],
+       ex:"Hidden word: portuGAL LEONora."},
+      {n:4, q:"A port — or to nurse a grudge.", enu:"(7)", answers:["HARBOUR"],
+       ex:"Double definition: a harbour (port), and to harbour a grudge."},
+      {n:5, q:"It turns twice a day, and will happily see you over.", enu:"(4)", answers:["TIDE"],
+       ex:"Double definition: the tide turns; and to tide someone over."},
+      {n:6, q:"Hospital tree, found at the wheel.", enu:"(4)", answers:["HELM"],
+       ex:"H (hospital) + ELM (tree) = HELM, the steering position."},
+      {n:7, q:"A canoe, broken up, becomes the deep blue.", enu:"(5)", answers:["OCEAN"],
+       ex:"Anagram of CANOE = OCEAN."},
+      {n:8, q:"Beneath, then a pull — a current that catches swimmers out.", enu:"(8)", answers:["UNDERTOW"],
+       ex:"UNDER (beneath) + TOW (a pull) = UNDERTOW."},
+      {n:9, q:"Navigator's angle-finder, tucked inside an Essex tantrum.", enu:"(7)", answers:["SEXTANT"],
+       ex:"Hidden word: esSEX TANTrum."},
+      {n:10, q:"Decline and recede, as the sea does.", enu:"(3)", answers:["EBB"],
+       ex:"Double definition: to ebb (decline), and the ebb of the tide."}
+    ],
+    bonus:[
+      {n:1, q:"A contest — or Alderney's notorious ship-wrecking tidal stream.", enu:"(4)", answers:["RACE"],
+       ex:"Double definition. The Race of Alderney (Le Raz Blanchard) is one of Europe's strongest tidal races."},
+      {n:2, q:"Nelson's flagship, and what Trafalgar delivered.", enu:"(7)", answers:["VICTORY"],
+       ex:"Double definition: HMS Victory, and a victory."},
+      {n:3, q:"A boat's backbone timber — or to capsize, with 'over'.", enu:"(4)", answers:["KEEL"],
+       ex:"Double definition: the keel; and to keel over."}
+    ]
+  },
+  {
+    id:21, tier:"Savage",
+    hidden:{ answer:"PROMONTORY", hint:"Read the first letter of each of the ten answers, in order — a headland emerges." },
+    clues:[
+      {n:1, q:"A hot prole, wildly reformed, offers a view from the cabin.", enu:"(8)", answers:["PORTHOLE"],
+       ex:"Anagram of HOT PROLE = PORTHOLE."},
+      {n:2, q:"Street plus a farmstead makes a sheltered place to anchor.", enu:"(9)", answers:["ROADSTEAD"],
+       ex:"ROAD (street) + STEAD (farmstead / place) = ROADSTEAD, a sheltered anchorage."},
+      {n:3, q:"Tree, then a moment's hesitation, yields old rope for caulking.", enu:"(5)", answers:["OAKUM"],
+       ex:"OAK (tree) + UM (hesitation) = OAKUM, the tarred fibre used to caulk seams."},
+      {n:4, q:"Abandon on a desert island — a dark red, we might say.", enu:"(6)", answers:["MAROON"],
+       ex:"Double definition: to maroon (abandon), and maroon (the colour)."},
+      {n:5, q:"The visible offshore distance, buried in a fit of scoffing.", enu:"(6)", answers:["OFFING"],
+       ex:"Hidden word: scOFFING. 'In the offing' = in view out to sea."},
+      {n:6, q:"Rearrange 'a pen' for the slackest of tides.", enu:"(4)", answers:["NEAP"],
+       ex:"Anagram of A PEN = NEAP, the tide of smallest range."},
+      {n:7, q:"Matrons, in disarray, gather at the stern.", enu:"(7)", answers:["TRANSOM"],
+       ex:"Anagram of MATRONS = TRANSOM, the flat timber across a boat's stern."},
+      {n:8, q:"The lowest deck, hidden in a major lopping.", enu:"(5)", answers:["ORLOP"],
+       ex:"Hidden word: majOR LOPping. The orlop is the lowest deck of a ship."},
+      {n:9, q:"Take resistance, add a cow's bag, and steer.", enu:"(6)", answers:["RUDDER"],
+       ex:"R (resistance, in physics) + UDDER (cow's bag) = RUDDER."},
+      {n:10, q:"A measure and a branch, out at the end of the spar.", enu:"(7)", answers:["YARDARM"],
+       ex:"YARD (a measure) + ARM (a branch) = YARDARM."}
+    ],
+    bonus:[
+      {n:1, q:"Alderney's other tidal channel — or, archaically, to thrash.", enu:"(6)", answers:["SWINGE"],
+       ex:"Double definition: The Swinge runs between Alderney and Burhou; to swinge is to beat soundly."},
+      {n:2, q:"Generosity — and the ship Fletcher Christian seized from Bligh.", enu:"(6)", answers:["BOUNTY"],
+       ex:"Double definition: bounty (generosity) and HMS Bounty."},
+      {n:3, q:"A washer, oddly recast, as a heavy mooring rope.", enu:"(6)", answers:["HAWSER"],
+       ex:"Anagram of WASHER = HAWSER, a thick cable for mooring or towing."}
+    ]
+  }
+];
+
+/* ---------- Keith's flavour text ---------- */
+const KEITHISMS = [
+  "Tea recommended. Dictionary optional.",
+  "Proceed carefully. Keith has probably already solved it.",
+  "If Keith can't solve it, it's probably wrong.",
+  "No Googling. Keith will know.",
+  "Put the kettle on before attempting clue 7.",
+  "Keith has temporarily left for a bacon sandwich at PJ's.",
+  "Results are being verified at PJ's.",
+  "The Admiralty has been informed.",
+  "Keith remains unconvinced by everybody else's scores.",
+  "Mind the tide tables.",
+  "A gentleman never reveals his anagram method.",
+  "Clue 3 is easier than it looks. Clue 8 is not.",
+  "Brown sauce is a matter of conscience.",
+  "The compass has been checked. Twice.",
+  "Steady as she goes.",
+  "Rumours of a recount are, as ever, exaggerated.",
+  "Keith solved this one during the shipping forecast.",
+  "Charades within, homophones ahead.",
+  "The kettle is on. The Admiralty waits.",
+  "Should you falter, PJ's does a very good round of toast.",
+  "Nautical knowledge advantageous. Bacon knowledge essential.",
+  "Keith says: mind your enumerations."
+];
+
+/* ---------- state ---------- */
+let idx = 0;                      // current puzzle index
+let me = store.get("keith_name") || null;
+let knownNames = JSON.parse(store.get("keith_known")||"[]");
+
+/* ================================================================
+   RENDER PUZZLE
+   ================================================================ */
+const app = document.getElementById("app");
+
+function currentPuzzleNumberLabel(k){ return "No. " + k.id; }
+
+function renderPuzzle(){
+  const k = KEITHOGRAMS[idx];
+  app.innerHTML = `
+    <div class="puzzlebar">
+      <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap">
+        <span class="puzzle-id">Keithogram ${currentPuzzleNumberLabel(k)}</span>
+        <span class="tier ${k.tier.toLowerCase()}">${k.tier}</span>
+      </div>
+      <div class="nav">
+        <button class="btn" id="navPrev">‹ Previous</button>
+        <button class="btn" id="navRand">Random</button>
+        <button class="btn" id="navNext">Next ›</button>
+      </div>
+    </div>
+
+    <div class="placard">
+      <h2>The Main Puzzle</h2>
+      <div class="sub">Ten cryptic clues &middot; one point apiece &middot; feeds Keith's League Table</div>
+      <ol class="clues" id="mainClues">
+        ${k.clues.map((c,i)=>clueHTML(c,i,"m")).join("")}
+      </ol>
+
+      <div class="hidden-box">
+        <div class="sub">The Hidden Solution</div>
+        <p style="margin:.2em 0 .4em">${k.hidden.hint}</p>
+        <div class="cells" id="hiddenCells">
+          ${k.hidden.answer.split("").map(ch=>`<div class="cell" data-ch="${ch}">·</div>`).join("")}
+        </div>
+        <p style="font-size:.86em;color:var(--cream-dim);margin:0">Solve all ten to light it up. It is checked, but not scored — a matter of pride only.</p>
+      </div>
+    </div>
+
+    <div class="placard" style="margin-top:18px">
+      <h2>Admiral Keith's Bonus Round</h2>
+      <div class="sub">Three maritime clues &middot; feeds the Admiralty Board &middot; scored separately</div>
+      <ol class="clues" id="bonusClues">
+        ${k.bonus.map((c,i)=>clueHTML(c,i,"b")).join("")}
+      </ol>
+    </div>
+
+    <div class="actions">
+      <button class="btn btn-primary" id="submitBtn">Submit to the Admiralty</button>
+      <button class="btn" id="revealBtn">Reveal answers</button>
+    </div>
+
+    <div class="verdict" id="verdict"></div>
+  `;
+
+  // wire clue inputs
+  app.querySelectorAll(".answerline input").forEach(inp=>{
+    inp.addEventListener("input", ()=>{ inp.classList.remove("correct","wrong"); liveHidden(); });
+    inp.addEventListener("keydown", e=>{ if(e.key==="Enter"){ e.preventDefault(); doSubmit(); } });
+  });
+
+  document.getElementById("navPrev").onclick = ()=>{ idx=(idx-1+KEITHOGRAMS.length)%KEITHOGRAMS.length; renderPuzzle(); };
+  document.getElementById("navNext").onclick = ()=>{ idx=(idx+1)%KEITHOGRAMS.length; renderPuzzle(); };
+  document.getElementById("navRand").onclick = ()=>{ if(KEITHOGRAMS.length>1){let n;do{n=Math.floor(Math.random()*KEITHOGRAMS.length)}while(n===idx);idx=n;} renderPuzzle(); };
+  document.getElementById("submitBtn").onclick = doSubmit;
+  document.getElementById("revealBtn").onclick = revealAll;
+}
+
+function clueHTML(c,i,grp){
+  return `<li class="clue">
+    <div class="num">${c.n}</div>
+    <div class="body"><span class="q">${c.q}</span> <span class="enu">${c.enu}</span></div>
+    <div class="answerline">
+      <input data-grp="${grp}" data-i="${i}" aria-label="Answer to clue ${c.n}" autocomplete="off" spellcheck="false" />
+      <span class="mark" id="mark-${grp}-${i}"></span>
+    </div>
+    <div class="reveal" id="rev-${grp}-${i}"><b>${c.answers[0]}</b> — ${c.ex}</div>
+  </li>`;
+}
+
+/* live-update the hidden acrostic cells as main answers are typed correctly */
+function liveHidden(){
+  const k = KEITHOGRAMS[idx];
+  const cells = document.querySelectorAll("#hiddenCells .cell");
+  k.clues.forEach((c,i)=>{
+    const inp = app.querySelector(`input[data-grp="m"][data-i="${i}"]`);
+    const good = inp && c.answers.some(a=>norm(a)===norm(inp.value));
+    const cell = cells[i];
+    if(!cell) return;
+    if(good){ cell.textContent = k.hidden.answer[i]; cell.classList.add("filled"); }
+    else { cell.textContent = "·"; cell.classList.remove("filled"); }
+  });
+}
+
+/* ================================================================
+   SUBMIT + SCORING
+   ================================================================ */
+function markGroup(grp, clues){
+  let score=0;
+  clues.forEach((c,i)=>{
+    const inp = app.querySelector(`input[data-grp="${grp}"][data-i="${i}"]`);
+    const mark = document.getElementById(`mark-${grp}-${i}`);
+    const ok = c.answers.some(a=>norm(a)===norm(inp.value)) && norm(inp.value)!=="";
+    inp.classList.toggle("correct",ok);
+    inp.classList.toggle("wrong",!ok && norm(inp.value)!=="");
+    mark.textContent = ok?"✓":(norm(inp.value)!==""?"✗":"");
+    mark.className = "mark " + (ok?"correct":(norm(inp.value)!==""?"wrong":""));
+    if(ok) score++;
+  });
+  return score;
+}
+
+function doSubmit(){
+  if(!me){ openNameDialog(); return; }
+  const k = KEITHOGRAMS[idx];
+  const main = markGroup("m", k.clues);       // /10  -> League
+  const bonus = markGroup("b", k.bonus);      // /3   -> Admiralty
+  liveHidden();
+  showVerdict(main, bonus, k);
+  recordResult(k.id, main, bonus);
+}
+
+function showVerdict(main, bonus, k){
+  const v = document.getElementById("verdict");
+  v.classList.add("show");
+  const award = baconAward(main);
+  const verdictLine = keithVerdict(main);
+  const hiddenGot = document.querySelectorAll("#hiddenCells .cell.filled").length === k.hidden.answer.length;
+  v.innerHTML = `
+    <div class="score">${main}<small> / 10 main</small>&nbsp;&nbsp;<span style="font-size:.55em;color:var(--gold-bright)">${bonus} / 3 bonus</span></div>
+    <div class="award">${award}</div>
+    <div class="says"><span class="who">Keith's verdict —</span>${verdictLine}</div>
+    ${hiddenGot ? `<div class="says" style="margin-top:10px"><span class="who">Hidden solution —</span>Cracked. <b style="color:var(--gold-bright);letter-spacing:.1em">${k.hidden.answer}</b>. The Admiralty nods, almost imperceptibly.</div>`:``}
+  `;
+  v.scrollIntoView({behavior:"smooth", block:"nearest"});
+}
+
+function baconAward(main){
+  if(main===10) return "🥓 PJ's Platinum Bacon Sandwich";
+  if(main>=8)  return "🥓 PJ's Grand Bacon Sandwich";
+  if(main>=5)  return "🥓 Standard PJ's Bacon Sandwich";
+  return "🍞 Toast. Bacon remains pending.";
+}
+function keithVerdict(main){
+  const perfect=["Suspiciously good. A review panel has been convened.","Keith has been notified and is considering a recount.","PJ's have been placed on standby.","The Admiralty is pleased."];
+  const good=["Extra brown sauce authorised.","Good effort. Clue 6 was practically waving at you.","Respectable. Keith raises an eyebrow, approvingly.","Solid work. The kettle approves."];
+  const poor=["More study required before progressing to bacon.","Toast has been awarded. Bacon remains pending.","Keith suggests a second cup of tea and another look.","A valiant attempt. The dictionary was, perhaps, over-optional."];
+  const pick=a=>a[Math.floor(Math.random()*a.length)];
+  if(main===10) return pick(perfect);
+  if(main>=5)   return pick(good);
+  return pick(poor);
+}
+
+function revealAll(){
+  app.querySelectorAll(".reveal").forEach(r=>r.classList.add("show"));
+  const k=KEITHOGRAMS[idx];
+  const cells=document.querySelectorAll("#hiddenCells .cell");
+  k.hidden.answer.split("").forEach((ch,i)=>{ if(cells[i]){cells[i].textContent=ch;cells[i].classList.add("filled");} });
+  toast("Answers revealed. Keith looks away, disappointed but understanding.");
+}
+
+/* ================================================================
+   RESULTS + LEADERBOARDS
+   Local mirror is always kept; if CONFIG.endpoint is set we also
+   POST to the Google Sheet and GET the shared board.
+   ================================================================ */
+function loadResults(){ return JSON.parse(store.get("keith_results")||"[]"); }
+function saveResults(r){ store.set("keith_results", JSON.stringify(r)); }
+
+let remoteRows = [];   // scores from the shared Google Sheet, if configured
+function fetchRemote(){
+  if(!CONFIG.endpoint) return Promise.resolve();
+  return fetch(CONFIG.endpoint).then(r=>r.json())
+    .then(d=>{ remoteRows = Array.isArray(d)?d:(d.rows||[]); refreshBoards(); })
+    .catch(()=>{});
+}
+
+function recordResult(pid, main, bonus){
+  const row = { name: me, puzzle: pid, score: main, bonus: bonus, date: new Date().toISOString() };
+  const all = loadResults(); all.push(row); saveResults(all);
+  rememberName(me);
+  if(CONFIG.endpoint){
+    // no custom headers -> "simple" request, no CORS preflight needed
+    fetch(CONFIG.endpoint, {method:"POST", body: JSON.stringify(row)})
+      .then(()=>fetchRemote()).catch(()=>{});
+  }
+  refreshBoards();
+}
+
+function rememberName(n){
+  if(!knownNames.includes(n)){ knownNames.push(n); store.set("keith_known", JSON.stringify(knownNames)); }
+}
+
+function allRows(){
+  // local + remote (shared sheet), de-duplicated, plus optional Keith baseline
+  const seen=new Set(), rows=[];
+  loadResults().concat(remoteRows).forEach(r=>{
+    if(!r||!r.name) return;
+    const key = r.name+"|"+r.puzzle+"|"+r.date;
+    if(seen.has(key)) return; seen.add(key); rows.push(r);
+  });
+  if(CONFIG.keithBaseline && !rows.some(r=>r.name==="Keith")){
+    rows.push(
+      {name:"Keith",puzzle:1,score:10,bonus:3,date:"2025-01-01T09:00:00Z"},
+      {name:"Keith",puzzle:21,score:10,bonus:3,date:"2025-01-02T09:00:00Z"}
+    );
+  }
+  return rows;
+}
+
+function aggregate(rows){
+  const by={};
+  rows.forEach(r=>{
+    const p = by[r.name] || (by[r.name]={name:r.name,done:0,total:0,best:0,perfect:0,maritime:0});
+    p.done++; p.total+=r.score; p.best=Math.max(p.best,r.score);
+    if(r.score===10)p.perfect++; p.maritime+=(r.bonus||0);
+  });
+  return Object.values(by).map(p=>({...p, avg: p.done? (p.total/p.done):0 }));
+}
+
+const TITLES=[[24,"First Sea Lord"],[15,"Fleet Captain"],[8,"Chief Navigator"],[3,"Able Seaman"],[0,"Cabin Boy"]];
+function title(m){ for(const [t,name] of TITLES){ if(m>=t) return name; } return "Cabin Boy"; }
+
+function refreshBoards(){
+  const agg = aggregate(allRows());
+
+  // League: by best, then avg, then done
+  const league=[...agg].sort((a,b)=> b.best-a.best || b.avg-a.avg || b.done-a.done);
+  const lb=document.getElementById("leagueBody");
+  lb.innerHTML = league.length? league.map((p,i)=>`
+    <tr class="${p.name===me?'me':''} ${p.name==='Keith'?'keith':''}">
+      <td class="n">${i+1}</td><td>${esc(p.name)}</td><td class="n">${p.done}</td>
+      <td class="n">${p.avg.toFixed(1)}</td><td class="n">${p.best}</td><td class="n">${p.perfect||"—"}</td>
+    </tr>`).join("") : `<tr><td colspan="6" class="empty">No scores yet. Put the kettle on.</td></tr>`;
+
+  // championship line
+  const champ=document.getElementById("champLine");
+  if(league.length){
+    if(league[0].name==="Keith") champ.textContent="Keith remains at the top. The Admiralty is calm.";
+    else champ.textContent=`Keith has requested an inquiry into the scoring process. (${esc(league[0].name)} leads.)`;
+  } else champ.textContent="";
+
+  // Admiralty: by maritime score
+  const adm=[...agg].sort((a,b)=> b.maritime-a.maritime || b.best-a.best);
+  document.getElementById("admiraltyBody").innerHTML = adm.length? adm.map((p,i)=>`
+    <tr class="${p.name===me?'me':''} ${p.name==='Keith'?'keith':''}">
+      <td class="n">${i+1}</td><td>${esc(p.name)}</td><td class="n">${p.maritime}</td><td>${title(p.maritime)}</td>
+    </tr>`).join("") : `<tr><td colspan="4" class="empty">The Admiralty awaits its first captain.</td></tr>`;
+
+  // Recent
+  const recent=[...loadResults()].sort((a,b)=> new Date(b.date)-new Date(a.date)).slice(0,12);
+  document.getElementById("recentBody").innerHTML = recent.length? recent.map(r=>`
+    <tr class="${r.name===me?'me':''}">
+      <td>${esc(r.name)}</td><td class="n">No. ${r.puzzle}</td><td class="n">${r.score}/10</td>
+      <td class="n">${(r.bonus||0)}/3</td><td>${fmtDate(r.date)}</td>
+    </tr>`).join("") : `<tr><td colspan="5" class="empty">Nothing logged yet.</td></tr>`;
+}
+
+const esc = s => (s||"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const fmtDate = d => { const t=new Date(d); return isNaN(t)?"—":t.toLocaleDateString("en-GB",{day:"2-digit",month:"short"}); };
+
+/* ================================================================
+   NAME / IDENTITY
+   ================================================================ */
+const dlg=document.getElementById("nameDlg");
+function openNameDialog(){
+  const sel=document.getElementById("existingSel");
+  const wrap=document.getElementById("existingWrap");
+  if(knownNames.length){
+    wrap.style.display="block";
+    sel.innerHTML=`<option value="">— new name below —</option>`+knownNames.map(n=>`<option>${esc(n)}</option>`).join("");
+  } else wrap.style.display="none";
+  document.getElementById("newName").value="";
+  if(typeof dlg.showModal==="function") dlg.showModal(); else dlg.setAttribute("open","");
+}
+document.getElementById("nameSave").onclick=()=>{
+  const sel=document.getElementById("existingSel");
+  const typed=document.getElementById("newName").value.trim();
+  const chosen = typed || (sel && sel.value) || "";
+  if(!chosen){ toast("A name is required to come aboard."); return; }
+  me=chosen; store.set("keith_name",me); rememberName(me);
+  document.getElementById("whoName").textContent=me;
+  dlg.close(); refreshBoards();
+  toast(`Welcome aboard, ${me}.`);
+};
+document.getElementById("nameCancel").onclick=()=>dlg.close();
+document.getElementById("changeName").onclick=openNameDialog;
+
+/* ================================================================
+   TOOLBAR: font size + tea-time
+   ================================================================ */
+let fs=parseFloat(store.get("keith_fs")||"1");
+function applyFs(){ document.documentElement.style.setProperty("--fs", fs.toFixed(2)); store.set("keith_fs",fs.toFixed(2)); }
+document.getElementById("fontUp").onclick=()=>{ fs=Math.min(1.6,fs+0.1); applyFs(); };
+document.getElementById("fontDown").onclick=()=>{ fs=Math.max(0.85,fs-0.1); applyFs(); };
+applyFs();
+
+const teaBtn=document.getElementById("teaTime");
+let tea = store.get("keith_tea")==="1";
+function applyTea(){
+  document.body.classList.toggle("tea-time",tea);
+  teaBtn.classList.toggle("on",tea);
+  teaBtn.setAttribute("aria-pressed",tea?"true":"false");
+  store.set("keith_tea",tea?"1":"0");
+}
+teaBtn.onclick=()=>{ tea=!tea; applyTea(); if(tea) toast("Tea-Time Mode activated. A comfortable puzzle experience has been prepared."); };
+applyTea();
+
+/* ================================================================
+   TABS
+   ================================================================ */
+document.querySelectorAll(".tab").forEach(t=>{
+  t.onclick=()=>{
+    document.querySelectorAll(".tab").forEach(x=>x.classList.remove("on"));
+    document.querySelectorAll(".panel").forEach(x=>x.classList.remove("on"));
+    t.classList.add("on");
+    document.getElementById("panel-"+t.dataset.panel).classList.add("on");
+  };
+});
+
+/* ================================================================
+   KEITHISMS + TOAST
+   ================================================================ */
+function rotateKeithism(){
+  const el=document.getElementById("keithism");
+  el.textContent = KEITHISMS[Math.floor(Math.random()*KEITHISMS.length)];
+}
+setInterval(rotateKeithism, 9000);
+
+let toastTimer;
+function toast(msg){
+  const t=document.getElementById("toast");
+  t.textContent=msg; t.classList.add("show");
+  clearTimeout(toastTimer); toastTimer=setTimeout(()=>t.classList.remove("show"),4200);
+}
+
+/* ================================================================
+   BOOT
+   ================================================================ */
+(function boot(){
+  if(me){ document.getElementById("whoName").textContent=me; }
+  else { document.getElementById("whoName").textContent="a guest"; }
+  rotateKeithism();
+  renderPuzzle();
+  refreshBoards();
+  fetchRemote();
+  if(!me){ setTimeout(openNameDialog, 500); }
+})();
+</script>
+</body>
+</html>
