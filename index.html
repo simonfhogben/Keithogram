@@ -310,8 +310,8 @@
    ================================================================ */
 
 /* ---- CONFIG: paste your Apps Script Web App URL here after deploy ---- */
-const CONFIG =  {
-  endpoint: "https://script.google.com/macros/s/AKfycbyUXzbSbvnXEvlR31Sxe6AEJYEWda6EJcfzY8vd7mGek_u-9Ow6RjsS4Gjb53FZseUf/exec",           // e.g. "https://script.google.com/macros/s/AKfy.../exec"  (leave "" for local-only)
+const CONFIG = {
+  endpoint: "https://script.google.com/macros/s/AKfycbyUXzbSbvnXEvlR31Sxe6AEJYEWda6EJcfzY8vd7mGek_u-9Ow6RjsS4Gjb53FZseUf/exec",
   keithBaseline: true     // seed "Keith" onto the boards so there is always a champion to chase
 };
 
@@ -336,6 +336,7 @@ const norm = s => (s||"").toString().toUpperCase().replace(/[^A-Z0-9]/g,"");
    is accepted (allow common variants).
    ================================================================ */
 const KEITHOGRAMS = [
+  /* ── Puzzle 1 (original, verified) ── */
   {
     id:1, tier:"Gentle",
     hidden:{ answer:"LIGHTHOUSE", hint:"Read the first letter of each of the ten answers, in order." },
@@ -370,6 +371,313 @@ const KEITHOGRAMS = [
        ex:"Double definition: the keel; and to keel over."}
     ]
   },
+  {
+    id:2, tier:"Gentle",
+    hidden:{ answer:"SUBMARINER", hint:"First letters of the ten answers, in order, spell a man of the deep." },
+    clues:[
+      {n:1, q:"The back of a ship — or an unyielding expression.", enu:"(5)", answers:["STERN"],
+       ex:"Double definition: the stern (the rear of a vessel); a stern look (severe and unsmiling)."},
+      {n:2, q:"Beneath, then a pull — a current that catches swimmers out.", enu:"(8)", answers:["UNDERTOW"],
+       ex:"UNDER (beneath) + TOW (a pull) = UNDERTOW, the subsurface current running away from shore."},
+      {n:3, q:"Three-masted sailing vessel — or what a dog does at the postman.", enu:"(4)", answers:["BARK"],
+       ex:"Double definition: a bark (a three-masted sailing vessel, square-rigged on fore and main); a bark (a dog's call)."},
+      {n:4, q:"Ship's officer below the master — or a very good friend.", enu:"(4)", answers:["MATE"],
+       ex:"Double definition: the mate (first mate, second mate — the merchant officer ranks below the master); a mate (a companion or friend)."},
+      {n:5, q:"Toward the rear of the vessel — or following behind.", enu:"(3)", answers:["AFT"],
+       ex:"Double definition: aft (nautical — toward the stern); after (following in position or time)."},
+      {n:6, q:"Reduce a sail's area in a strong blow — or a submerged navigation hazard.", enu:"(4)", answers:["REEF"],
+       ex:"Double definition: to reef (reduce the area of a sail by tying in a reef point); a reef (a submerged rock or coral formation)."},
+      {n:7, q:"The garden wall's best-dressed tenant — also found in Ivy League colleges.", enu:"(3)", answers:["IVY"],
+       ex:"Double definition: ivy (the clinging evergreen climber, mainstay of garden walls); Ivy League (the prestigious American universities, named for their ivy-clad buildings)."},
+      {n:8, q:"The notch on a yard's end — or where an arrow meets its string.", enu:"(4)", answers:["NOCK"],
+       ex:"Double definition: a nock (the notch at the end of a yard onto which ropes are fitted); a nock (the notch at the rear of an arrow where it sits on the bowstring)."},
+      {n:9, q:"Slippery estuary fish — or what a Reacher villain resembles when cornered.", enu:"(3)", answers:["EEL"],
+       ex:"Double definition: an eel (a snake-like fish found in estuaries and rivers); slippery as an eel (a villain's tendency to wriggle out of trouble)."},
+      {n:10, q:"A ship's essential line — or what the press-gang used to do to reluctant recruits.", enu:"(4)", answers:["ROPE"],
+       ex:"Double definition: a rope (any of the many lines on a working vessel); to rope in (to recruit by persuasion — or in the old Navy's case, by force)."}
+    ],
+    bonus:[
+      {n:1, q:"What the periscope does — or what Keith does with a new Reacher novel.", enu:"(4)", answers:["SCAN"],
+       ex:"Double definition: to scan (sweep with a periscope or radar); to scan (read quickly and keenly — as Keith does with a new thriller)."},
+      {n:2, q:"The weapon that sank the Bismarck — or what a Clancy plot delivers at depth.", enu:"(7)", answers:["TORPEDO"],
+       ex:"Double definition: a torpedo (the self-propelled underwater weapon); to torpedo (deliver a devastating blow — as a Clancy plot torpedoes the villain's plan)."},
+      {n:3, q:"The triple-spoken order to crash-dive a submarine.", enu:"(4,4,4)", answers:["DIVE DIVE DIVE","DIVEDIVE"],
+       ex:"DIVE DIVE DIVE: the traditional triple order to crash-dive — spoken three times to ensure it is heard over the noise of alarms and flooding ballast tanks."}
+    ]
+  },
+  {
+    id:3, tier:"Gentle",
+    hidden:{ answer:"STARBOARDS", hint:"First letters of the ten answers spell the sailor's right-hand side." },
+    clues:[
+      {n:1, q:"Join two rope ends permanently — or the order given after Trafalgar.", enu:"(6)", answers:["SPLICE"],
+       ex:"Double definition: to splice (join two rope ends by interweaving strands); splice the main brace (the naval order for a tot of rum, traditionally given after a great victory — as at Trafalgar)."},
+      {n:2, q:"Change direction by turning through the wind — or a small sharp nail.", enu:"(4)", answers:["TACK"],
+       ex:"Double definition: to tack (change a sailing vessel's course by bringing the bow through the wind); a tack (a small sharp nail used in boatbuilding and upholstery)."},
+      {n:3, q:"A ship's weight-dropper — or a presenter who holds the news steady.", enu:"(6)", answers:["ANCHOR"],
+       ex:"Double definition: a ship's anchor (the weighted device that holds a vessel to the seabed); a news anchor (the television presenter who holds a broadcast together)."},
+      {n:4, q:"A boatbuilder's sealant — or what a pine tree weeps.", enu:"(5)", answers:["RESIN"],
+       ex:"Double definition: resin (used to seal and waterproof timber hulls and fibreglass boats); resin (the sticky substance produced naturally by pine and other conifers)."},
+      {n:5, q:"The knot every sailor learns first — also the line from the ship's bow.", enu:"(7)", answers:["BOWLINE"],
+       ex:"Double definition: a bowline (the essential non-slip loop knot — the first knot taught to every sailor); a bow line (the line from the bow of a vessel to the shore or a buoy)."},
+      {n:6, q:"Tarred hemp for sealing seams — hidden inside a cloak umpteen sailors wore.", enu:"(5)", answers:["OAKUM"],
+       ex:"Hidden word: cloAK UMpteen. OAKUM is tarred hemp fibre used to caulk (seal) the seams between a wooden ship's planks — a job that occupied many a ship's boy."},
+      {n:7, q:"Directly to the side — at right angles to the ship's length.", enu:"(5)", answers:["ABEAM"],
+       ex:"Double definition: abeam (nautical — directly to the side, at right angles to the ship's fore-and-aft line); a beam (a structural timber, also the ray of a lighthouse sweeping across the water)."},
+      {n:8, q:"Take resistance from the physicist, add a cow's undercarriage, and steer.", enu:"(6)", answers:["RUDDER"],
+       ex:"R (the symbol for electrical resistance in physics) + UDDER (a cow's milk-producing apparatus) = RUDDER, the underwater blade that steers a vessel."},
+      {n:9, q:"The crane arm from which a ship's lifeboat hangs — always ready to deploy.", enu:"(5)", answers:["DAVIT"],
+       ex:"Double definition: a davit (the curved metal arm from which a lifeboat is suspended, swung outboard and lowered to launch); a pair of davits (always fitted in pairs, one on each side)."},
+      {n:10, q:"The ship's rear — or a look Keith reserves for a poor cryptic clue.", enu:"(5)", answers:["STERN"],
+       ex:"Double definition: the stern (the rear of a vessel — where the ensign flies); a stern look (severe and unamused — Keith's expression when the wordplay doesn't parse)."}
+    ],
+    bonus:[
+      {n:1, q:"The right side of a vessel looking forward — Old Norse for 'steering board side'.", enu:"(9)", answers:["STARBOARD"],
+       ex:"STARBOARD: the right side of a vessel when facing the bow. From Old Norse 'stjórnborði' — the side on which the steering oar was mounted, before rudders were fitted to the sternpost."},
+      {n:2, q:"The anchor chain pipe through the bow — to rise through it means earning a commission from the lower deck.", enu:"(5)", answers:["HAWSE"],
+       ex:"HAWSE: the opening in a ship's bow through which the anchor chain runs. 'To come up through the hawse' is to earn a commission starting from the lower deck — the hardest and most respected route to officer rank."},
+      {n:3, q:"The ship's flag at the stern — distinct from the jack at the bow.", enu:"(6)", answers:["ENSIGN"],
+       ex:"ENSIGN: the national flag flown at the stern of a vessel — Red Ensign for British merchant ships, White Ensign for the Royal Navy, Blue Ensign for naval auxiliaries. Each tells the world who she sails for."}
+    ]
+  },
+  {
+    id:4, tier:"Gentle",
+    hidden:{ answer:"FIGUREHEAD", hint:"First letters name the carved decoration at an old warship's bow." },
+    clues:[
+      {n:1, q:"Six feet of depth — or to understand something completely.", enu:"(6)", answers:["FATHOM"],
+       ex:"Double definition: a fathom (a unit of depth equal to six feet, used to measure water); to fathom (to understand fully — 'I simply cannot fathom it')."},
+      {n:2, q:"A sailor's welcome ashore — two ales on draught, please.", enu:"(3)", answers:["INN"],
+       ex:"Double definition: an inn (the traditional tavern where sailors spent their pay ashore); inn (a hostelry — the welcoming end of a long voyage)."},
+      {n:3, q:"Change tack by letting the boom swing across — best done deliberately.", enu:"(4)", answers:["GYBE"],
+       ex:"Double definition: to gybe (change a sailing boat's direction by allowing the boom to swing across — potentially violent in strong winds); a gybe (the manoeuvre itself, also spelled 'jibe')."},
+      {n:4, q:"UN plus 'roll up a sail' gives you the opposite action.", enu:"(6)", answers:["UNFURL"],
+       ex:"UN (prefix meaning reverse the action) + FURL (to roll up and secure a sail) = UNFURL (to unroll and release a sail to the wind — the first act of every voyage)."},
+      {n:5, q:"A lighthouse's visible distance — or the farmhouse kitchen's iron centrepiece.", enu:"(5)", answers:["RANGE"],
+       ex:"Double definition: the range of a lighthouse (the distance at which its light is visible); a kitchen range (the large iron cooker found in old farmhouses — the sort Keith would approve of)."},
+      {n:6, q:"The naval flag at the stern — or the most junior commissioned officer afloat.", enu:"(6)", answers:["ENSIGN"],
+       ex:"Double definition: an ensign (the national flag flown at a vessel's stern — Red, White, or Blue); an Ensign (the most junior commissioned rank in some navies — the first rung of the officer ladder)."},
+      {n:7, q:"Hospital plus elm tree — find it at the wheel.", enu:"(4)", answers:["HELM"],
+       ex:"H (the abbreviation for hospital, seen on maps and road signs) + ELM (the English elm tree) = HELM (the wheel or tiller — the steering position of any vessel)."},
+      {n:8, q:"A circular back-current — or a swirling pool in a garden stream.", enu:"(4)", answers:["EDDY"],
+       ex:"Double definition: an eddy (a circular counter-current that forms behind obstructions in rivers and tidal flows); an eddy (a small whirlpool in a garden stream or pond outlet)."},
+      {n:9, q:"The sailmaker's piercing tool — also used to bind a Japanese sword's handle.", enu:"(3)", answers:["AWL"],
+       ex:"Double definition: an awl (a pointed tool for piercing canvas or leather — essential in sailmaking); an awl (used also in binding a Japanese sword's tsuka handle with silk ito cord)."},
+      {n:10, q:"The depth a vessel sits in the water — or a pint pulled straight from the cask.", enu:"(7)", answers:["DRAUGHT"],
+       ex:"Double definition: the draught (the distance from waterline to the lowest point of the keel — how deep she sits); a draught (a measure of beer drawn directly from a cask — the sailor's reward ashore)."}
+    ],
+    bonus:[
+      {n:1, q:"The carved figure at the bow of a warship — also a symbolic but powerless leader.", enu:"(10)", answers:["FIGUREHEAD"],
+       ex:"FIGUREHEAD: the carved decorative figure mounted at the bow of a sailing warship — lions, goddesses, portraits of monarchs. Also used figuratively for a leader who is ceremonial rather than effective (the opposite of Reacher)."},
+      {n:2, q:"The lowest part of a hull where bilge water collects — or nonsense.", enu:"(5)", answers:["BILGE"],
+       ex:"Double definition: the bilge (the lowest internal part of a hull, where water collects and must be pumped out); bilge (nonsense — 'what bilge!' — a fine nautical insult for a poor argument)."},
+      {n:3, q:"The ship's carpenter — the petty officer responsible for hull integrity and pumps.", enu:"(6)", answers:["CHIPPY"],
+       ex:"CHIPPY: the ship's carpenter — the petty officer responsible for the hull's watertight integrity, the pumps, and wooden spars. Known universally as 'the chippy', a title of considerable respect."}
+    ]
+  },
+  {
+    id:5, tier:"Gentle",
+    hidden:{ answer:"SEAMANSHIP", hint:"First letters spell the complete mastery of a vessel and the sea." },
+    clues:[
+      {n:1, q:"A lateral mast support — or a funeral cloth.", enu:"(6)", answers:["SHROUD"],
+       ex:"Double definition: a shroud (one of the lateral wires that support a mast from the sides — without them, the mast falls); a shroud (the cloth in which a body is wrapped for burial)."},
+      {n:2, q:"The receding tide — or to fade away gradually.", enu:"(3)", answers:["EBB"],
+       ex:"Double definition: the ebb (the outgoing tide, from high water to low); to ebb (to decline — 'his patience ebbed as the watch wore on')."},
+      {n:3, q:"Japanese flowering shrub — a spring blaze and a classic bonsai subject.", enu:"(6)", answers:["AZALEA"],
+       ex:"Double definition: an azalea (a flowering shrub spectacular in spring, beloved in Japanese gardens); a bonsai azalea (one of the most popular and beautiful subjects for the art — prized for flowers and autumn colour)."},
+      {n:4, q:"A permanent buoy to tie up to — or to tie up there.", enu:"(7)", answers:["MOORING"],
+       ex:"Double definition: a mooring (a permanent buoy or anchor to which a vessel is secured); to moor (to make fast to a buoy or quay — 'we moored in Braye Harbour for the night')."},
+      {n:5, q:"Up in the rigging — or a bonsai branch trained toward the sky.", enu:"(5)", answers:["ALOFT"],
+       ex:"Double definition: aloft (up in the rigging, above the deck — 'send a man aloft'); aloft (high up — a bonsai branch trained upward in the jin style, reaching for the light)."},
+      {n:6, q:"Rearrange PANE for the smallest tide.", enu:"(4)", answers:["NEAP"],
+       ex:"Anagram of PANE = NEAP. The neap tide occurs at the moon's first and third quarters — the sun and moon pull at right angles, giving the smallest tidal range of the month."},
+      {n:7, q:"A rigging support line — or to remain somewhere.", enu:"(4)", answers:["STAY"],
+       ex:"Double definition: a stay (a wire or rope supporting a mast — forestay, backstay, intermediate stay); to stay (to remain — 'stay' is also a dog command, fitting in either context)."},
+      {n:8, q:"Haul on a line with great effort — or stop a vessel by backing the headsail.", enu:"(5)", answers:["HEAVE"],
+       ex:"Double definition: to heave (haul a rope hard — 'heave away, handsomely!'); to heave to (bring a vessel to a virtual halt by backing the headsail against the wind — the classic heavy-weather manoeuvre)."},
+      {n:9, q:"A ballast block in the keel — or what fills a pirate's chest.", enu:"(5)", answers:["INGOT"],
+       ex:"Double definition: a ballast ingot (a block of iron or lead fitted low in the keel for stability); a gold ingot (the pirate's prize — the dream cargo in every buccaneer tale)."},
+      {n:10, q:"The ship's sharpest point — facing whatever the sea throws at it.", enu:"(4)", answers:["PROW"],
+       ex:"Double definition: the prow (the very tip of the bow — the foremost point of the hull); the prow (the leading edge that parts the wave and takes the first blow of every sea)."}
+    ],
+    bonus:[
+      {n:1, q:"The complete art of handling a vessel safely and efficiently in all conditions.", enu:"(10)", answers:["SEAMANSHIP"],
+       ex:"SEAMANSHIP: the full range of knowledge, judgement, and skill required to navigate and handle a vessel — from knot-tying to heavy-weather survival. The thing Keith spent a career in the merchant navy mastering."},
+      {n:2, q:"The safety mark on every merchant hull — Plimsoll's great achievement of 1876.", enu:"(9)", answers:["PLIMSOLL","LOADLINE"],
+       ex:"PLIMSOLL LINE (Load Line): the mark on every merchant vessel's hull showing the maximum safe loading depth. Campaigned for by Samuel Plimsoll MP and made law in the Merchant Shipping Act 1876 — saving untold lives."},
+      {n:3, q:"The merchant officer second in command — responsible for navigation and cargo.", enu:"(5,4)", answers:["CHIEF MATE","FIRST MATE"],
+       ex:"CHIEF MATE (First Officer): the second-in-command aboard a merchant vessel. Responsible for navigation, cargo planning and stowage, and the day-to-day safety of the ship. The master's right hand."}
+    ]
+  },
+  {
+    id:6, tier:"Gentle",
+    hidden:{ answer:"SWORDFIGHT", hint:"First letters name what a samurai and a Royal Navy officer both trained for." },
+    clues:[
+      {n:1, q:"Shallow water — or a large school of fish moving as one.", enu:"(5)", answers:["SHOAL"],
+       ex:"Double definition: a shoal (an area of shallow water — a navigation hazard, marked on the chart in blue); a shoal (a dense group of fish swimming together — 'a shoal of mackerel came past the hull')."},
+      {n:2, q:"The ship's trail astern — or a vigil held before a burial.", enu:"(4)", answers:["WAKE"],
+       ex:"Double definition: a wake (the disturbed water left behind a moving vessel, visible from the stern or from the air); a wake (a vigil held over a body the night before burial)."},
+      {n:3, q:"The timber of Nelson's navy — and the finest tree in Keith's garden.", enu:"(3)", answers:["OAK"],
+       ex:"Double definition: oak (the primary timber of Britain's wooden warships — 'hearts of oak'); oak (a magnificent deciduous tree, the pride of an English garden or parkland)."},
+      {n:4, q:"A fishing line's spool — or what a ship does in a confused sea.", enu:"(4)", answers:["REEL"],
+       ex:"Double definition: a reel (a spool on a fishing rod for storing and paying out line); to reel (to roll heavily — as a vessel reels in a confused, cross-running sea)."},
+      {n:5, q:"The crane arm that holds the lifeboat ready — one on each side of the ship.", enu:"(5)", answers:["DAVIT"],
+       ex:"Double definition: a davit (the curved arm from which a lifeboat hangs, swung outboard and lowered to launch); a pair of davits (one on each side — always ready, always inspected)."},
+      {n:6, q:"Six feet of depth — or what it takes to understand a real problem.", enu:"(6)", answers:["FATHOM"],
+       ex:"Double definition: a fathom (six feet of water depth — the standard unit of soundings before metres); to fathom (to understand thoroughly — 'I can't fathom why he did it')."},
+      {n:7, q:"The garden wall's most tenacious climber — and the emblem of old universities.", enu:"(3)", answers:["IVY"],
+       ex:"Double definition: ivy (Hedera helix, the evergreen climber that clings to garden walls with remarkable tenacity); the Ivy League (the prestigious American universities, named for their ivy-covered buildings)."},
+      {n:8, q:"A small multi-fluked anchor — or the hook for boarding in days of sail.", enu:"(7)", answers:["GRAPNEL"],
+       ex:"Double definition: a grapnel (a small anchor with four or five flukes, used by small craft or as a kedge); a grappling hook (thrown to catch an enemy's rail when boarding — Clancy's pirates use them still)."},
+      {n:9, q:"Deck opening for cargo or access — or what a plot does as it deepens.", enu:"(5)", answers:["HATCH"],
+       ex:"Double definition: a hatch (an opening in a ship's deck giving access to holds or lower decks); to hatch (to devise or develop — 'hatch a plan', as every Clancy villain does in the opening chapter)."},
+      {n:10, q:"Tropical hardwood — ideal for ship decks and garden furniture alike.", enu:"(4)", answers:["TEAK"],
+       ex:"Double definition: teak (Tectona grandis — tropical hardwood used for ship deck planking, highly resistant to moisture and splitting); teak garden furniture (the same qualities that make it perfect outdoors for decades)."}
+    ],
+    bonus:[
+      {n:1, q:"The Japanese long sword — longer blade of the samurai's paired set.", enu:"(6)", answers:["KATANA"],
+       ex:"KATANA: the longer of the two swords in a samurai's daishō (paired set). Blade typically 60–73 cm, curved and single-edged. A masterpiece of folded steel — the product of a swordsmith's lifetime of craft."},
+      {n:2, q:"The decorated handguard on a Japanese sword — often depicting ships, waves, or wildlife.", enu:"(5)", answers:["TSUBA"],
+       ex:"TSUBA: the handguard between blade and handle of a Japanese sword. Made of iron or soft metals, decorated with scenes from nature, battle, or mythology — maritime tsuba are particularly prized by collectors."},
+      {n:3, q:"The art of Japanese swordsmanship — literally 'the way of the sword'.", enu:"(5)", answers:["KENDO"],
+       ex:"KENDO: the Japanese martial art of sword fighting (ken = sword, dō = way), practised with bamboo swords and armour. Its principles of discipline, posture, and precision mirror those of seamanship."}
+    ]
+  },
+  {
+    id:7, tier:"Gentle",
+    hidden:{ answer:"TRAWLERMAN", hint:"First letters name the man who earns his living dragging a net." },
+    clues:[
+      {n:1, q:"Drag a net behind a vessel — or search Keith's bookshelves very thoroughly.", enu:"(5)", answers:["TRAWL"],
+       ex:"Double definition: to trawl (fish by dragging a net along or near the seabed); to trawl (search through a large collection methodically — as one trawls a library looking for the one Reacher novel not yet read)."},
+      {n:2, q:"The anchor cable in the water — or she rode all night at anchor in the harbour.", enu:"(4)", answers:["RODE"],
+       ex:"Double definition: the rode (the anchor cable or chain running from the vessel down to the anchor on the seabed); rode (past tense of 'ride' — 'she rode at anchor all night, perfectly still')."},
+      {n:3, q:"Canvas shelter over the cockpit — or shade for garden chairs on a good Alderney afternoon.", enu:"(6)", answers:["AWNING"],
+       ex:"Double definition: an awning (a canvas shelter over a ship's cockpit, companionway, or deck — essential in the tropics); an awning (a canvas or fabric shade over garden furniture — equally welcome on a sunny Alderney afternoon)."},
+      {n:4, q:"The drum-and-gear machine that hauls the anchor chain on deck.", enu:"(8)", answers:["WINDLASS"],
+       ex:"Double definition: a windlass (the mechanical device — drum, gears, and motor — that hauls in the anchor chain); a windlass (any winding machine used to raise heavy loads — the same principle as the medieval castle's drawbridge mechanism)."},
+      {n:5, q:"A vessel's sideways drift downwind — or room left in a tight schedule.", enu:"(6)", answers:["LEEWAY"],
+       ex:"Double definition: leeway (the sideways drift of a vessel to leeward, caused by wind pressure on hull and rigging); leeway (a margin for manoeuvre — 'there's very little leeway left in the timetable')."},
+      {n:6, q:"The receding tide — or a steady decline in what was once strong.", enu:"(3)", answers:["EBB"],
+       ex:"Double definition: the ebb (the outgoing tide, from high water to low); to ebb (to decline — 'his interest ebbed as the long watch wore on')."},
+      {n:7, q:"A fishing line's spool — or what a ship does when she meets a steep sea.", enu:"(4)", answers:["REEL"],
+       ex:"Double definition: a reel (the spool on a fishing rod for storing and paying out line); to reel (to roll heavily — as a vessel reels when caught beam-on to a steep sea)."},
+      {n:8, q:"The tallest pole on a square-rigged ship — or the autumn's gift to forest floors.", enu:"(4)", answers:["MAST"],
+       ex:"Double definition: a mast (the vertical spar that supports a vessel's sails and rigging); mast (the collective term for acorns, beechnuts, and similar nuts — the autumn crop of the forest floor)."},
+      {n:9, q:"Up in the rigging — or what a kite does in a good Alderney breeze.", enu:"(5)", answers:["ALOFT"],
+       ex:"Double definition: aloft (up in the rigging, above the deck — 'a man aloft to clear the block!'); aloft (high in the air — as a kite soars from Alderney's cliff tops on a westerly)."},
+      {n:10, q:"The ship's celestial fix at twelve o'clock — or the gardener's lunch break.", enu:"(4)", answers:["NOON"],
+       ex:"Double definition: ship's noon (the daily celestial position fix taken at local apparent noon — the most important fix of the day for a merchant navigator); noon (midday — the traditional moment for the gardener's break, a sandwich, and a cup of tea)."}
+    ],
+    bonus:[
+      {n:1, q:"A fishing vessel that drags a net — the working boats around the Channel Islands.", enu:"(7)", answers:["TRAWLER"],
+       ex:"TRAWLER: a fishing vessel that catches fish by towing a net along or near the seabed. Channel Islands trawlers work the rich waters around Alderney, landing crabs, lobsters, bass, and bream."},
+      {n:2, q:"The merchant navy's load line — Plimsoll's monument to drowned sailors.", enu:"(9)", answers:["PLIMSOLL"],
+       ex:"PLIMSOLL LINE: the load line on every merchant hull, showing the maximum safe loading depth. Samuel Plimsoll MP campaigned for it after years of overloaded 'coffin ships' — and the drowned men who served on them."},
+      {n:3, q:"The cornerstone document of merchant shipping — receipt, contract, and title in one.", enu:"(4,2,6)", answers:["BILL OF LADING"],
+       ex:"BILL OF LADING: the fundamental document of merchant trade — simultaneously a receipt for cargo, a contract of carriage, and a document of title. Without it, cargo cannot legally change hands. Keith would know this paperwork intimately."}
+    ]
+  },
+  {
+    id:8, tier:"Gentle",
+    hidden:{ answer:"MIDSHIPMAN", hint:"First letters name the most junior officer afloat." },
+    clues:[
+      {n:1, q:"The merchant officer below the master — or a thoroughly good friend.", enu:"(4)", answers:["MATE"],
+       ex:"Double definition: the mate (first mate, second mate, third mate — the officer ranks below master in the merchant navy); a mate (a companion and friend — 'a good mate')."},
+      {n:2, q:"A narrow arm of the sea — or the pipe feeding water to a garden pond.", enu:"(5)", answers:["INLET"],
+       ex:"Double definition: an inlet (a narrow arm of the sea running into the land, or a small bay); an inlet pipe (the tube through which water enters a garden pond or water feature)."},
+      {n:3, q:"The crane arm from which a lifeboat hangs — always deployed outboard first.", enu:"(5)", answers:["DAVIT"],
+       ex:"Double definition: a davit (the curved metal arm from which a lifeboat or tender is suspended); the davit drill (swing outboard, lower away — a procedure rehearsed until it is instinctive)."},
+      {n:4, q:"The lateral mast wire — or a cloth wrapping for the departed.", enu:"(6)", answers:["SHROUD"],
+       ex:"Double definition: a shroud (a lateral rigging wire running from masthead to ship's side, supporting the mast); a shroud (the cloth wrapping for a body before burial — giving this clue a suitably dramatic edge)."},
+      {n:5, q:"Pull a rope hard — or drag heavy garden pots before the first frost.", enu:"(4)", answers:["HAUL"],
+       ex:"Double definition: to haul (pull a rope with sustained effort — 'haul away!'); to haul (drag something heavy — as one hauls large terracotta pots to shelter before a hard frost)."},
+      {n:6, q:"The garden wall's most tenacious climber — the Ivy League's namesake.", enu:"(3)", answers:["IVY"],
+       ex:"Double definition: ivy (Hedera helix, the evergreen climber that clings to old walls with extraordinary tenacity); the Ivy League (the group of American universities, named for the ivy covering their old buildings)."},
+      {n:7, q:"A ship's bow-down bow-up motion in head seas — or what pine trees produce.", enu:"(5)", answers:["PITCH"],
+       ex:"Double definition: to pitch (the motion of a vessel's bow rising and falling in head seas — distinct from rolling, which is side-to-side); pitch (pine tar — used historically to caulk seams and waterproof rigging, with a distinctive smell)."},
+      {n:8, q:"A permanent buoy to lie to — or to tie up alongside there.", enu:"(7)", answers:["MOORING"],
+       ex:"Double definition: a mooring (a permanent buoy or fixed anchor to which a vessel is secured); to moor (to make fast to a buoy, quay, or at anchor — 'we moored in Braye Harbour for the night and slept at last')."},
+      {n:9, q:"A bearing from north — used to find the sun's direction for planning a garden.", enu:"(7)", answers:["AZIMUTH"],
+       ex:"Double definition: azimuth (a bearing measured clockwise from true north — the standard expression of direction in navigation); the solar azimuth (the sun's compass bearing at any given time, used to plan a garden's light and shade across the seasons)."},
+      {n:10, q:"Rearrange PANE for the smallest tide — the race makes it irrelevant around Alderney.", enu:"(4)", answers:["NEAP"],
+       ex:"Anagram of PANE = NEAP. The neap tide has the smallest range (occurs at the moon's quarters). In the Race of Alderney, even a neap tide runs at several knots — the term 'neap' barely applies."}
+    ],
+    bonus:[
+      {n:1, q:"The most junior commissioned officer rank in the Royal Navy — historically, young gentlemen sent to sea.", enu:"(10)", answers:["MIDSHIPMAN"],
+       ex:"MIDSHIPMAN: from 'midship' — these young officers (often boys of thirteen or fourteen) lived amidships and were learning the officer's trade. Horatio Nelson joined as a midshipman at twelve. The rank is still used today."},
+      {n:2, q:"The Royal Hospital that provided for injured and retired sailors — on the Thames at Greenwich.", enu:"(9)", answers:["GREENWICH"],
+       ex:"ROYAL HOSPITAL GREENWICH: the magnificent Baroque complex on the Thames, designed by Wren, which housed old and injured sailors for two centuries. Now the home of the National Maritime Museum — essential visiting for Keith."},
+      {n:3, q:"The naval ceremony of crossing the equator — and the initiation it brings.", enu:"(9,3,4)", answers:["CROSSING THE LINE"],
+       ex:"CROSSING THE LINE: the traditional equatorial ceremony initiated when a vessel crosses the equator. Those crossing for the first time ('pollywogs') are initiated by those who have crossed before ('shellbacks') — a rite Keith would have undergone in the merchant navy."}
+    ]
+  },
+  {
+    id:9, tier:"Gentle",
+    hidden:{ answer:"WAKIZASHIS", hint:"First letters spell the plural of the samurai's companion sword." },
+    clues:[
+      {n:1, q:"The shorter companion sword of the samurai — worn indoors where the long blade could not go.", enu:"(9)", answers:["WAKIZASHI"],
+       ex:"WAKIZASHI: the shorter of the two swords in a samurai's daishō (paired set). Typically 30–60 cm, it was worn indoors and in confined spaces, and served as a backup weapon when the katana could not be drawn. Together they were the mark of samurai rank."},
+      {n:2, q:"The ship's weight-dropper — or the presenter who holds an evening broadcast together.", enu:"(6)", answers:["ANCHOR"],
+       ex:"Double definition: a ship's anchor (the weighted device that holds a vessel to the seabed — without it, she drifts); a news anchor (the television presenter who holds a broadcast programme together)."},
+      {n:3, q:"The ship's backbone from stem to stern — or to capsize entirely.", enu:"(4)", answers:["KEEL"],
+       ex:"Double definition: the keel (the main structural member of a vessel, running along the bottom from bow to stern — the foundation on which everything else is built); to keel over (to capsize or, informally, to collapse)."},
+      {n:4, q:"A sailor's welcome ashore — the traditional end-of-voyage establishment.", enu:"(3)", answers:["INN"],
+       ex:"Double definition: an inn (the traditional tavern where sailors spent their shore leave and their pay); inn (a hostelry — the welcoming, warm end of a long cold voyage)."},
+      {n:5, q:"The highest point overhead — used in celestial navigation to measure altitude.", enu:"(6)", answers:["ZENITH"],
+       ex:"Double definition: the zenith (the point directly overhead in the sky — used in celestial navigation to calculate the altitude of stars); the zenith (the highest point of achievement — the peak of a long career at sea)."},
+      {n:6, q:"Japanese flowering shrub — spectacular in spring, and a bonsai classic.", enu:"(6)", answers:["AZALEA"],
+       ex:"Double definition: an azalea (a flowering shrub of the genus Rhododendron, spectacular in Japanese gardens in spring); a bonsai azalea (one of the most popular and beautiful bonsai subjects — prized for flowers and elegance of form)."},
+      {n:7, q:"The ship's rear — or a look that would silence a first mate at fifty paces.", enu:"(5)", answers:["STERN"],
+       ex:"Double definition: the stern (the rear of a vessel — where the ensign flies and the rudder does its work); a stern look (severe and unamused — the expression Keith deploys when presented with a weak cryptic clue)."},
+      {n:8, q:"Hospital plus elm gives you the steering position.", enu:"(4)", answers:["HELM"],
+       ex:"H (the standard abbreviation for hospital, used on maps and road signs) + ELM (the English elm tree, once widespread before Dutch elm disease) = HELM (the wheel or tiller used to steer a vessel — the most responsible position on the bridge)."},
+      {n:9, q:"The garden wall's most persistent climber — and the emblem of distinguished universities.", enu:"(3)", answers:["IVY"],
+       ex:"Double definition: ivy (Hedera helix — the evergreen climber that adorns old walls and garden fences with year-round green); the Ivy League (the group of American universities, their buildings covered in the same plant)."},
+      {n:10, q:"The ship's deck drain — or to sink someone's plans entirely.", enu:"(7)", answers:["SCUPPER"],
+       ex:"Double definition: a scupper (the drainage hole cut through a ship's bulwark or deck edge to allow shipped water to drain overboard); to scupper (to ruin or sink completely — 'that storm scuppered the whole operation')."}
+    ],
+    bonus:[
+      {n:1, q:"The long sword of the samurai — the longer blade of the paired daishō set.", enu:"(6)", answers:["KATANA"],
+       ex:"KATANA: the longer sword of the samurai's daishō — blade 60–73 cm, curved, single-edged, made of folded and differentially hardened steel. The product of a swordsmith's lifetime of learning, and the weapon that defined a warrior class."},
+      {n:2, q:"The Japanese short dagger — the third blade sometimes carried alongside the daishō.", enu:"(5)", answers:["TANTO"],
+       ex:"TANTŌ: a Japanese short-bladed dagger (under 30 cm) sometimes carried as a third weapon alongside the daishō. Used at close quarters and as a ceremonial blade — some tantō have blades of extraordinary beauty."},
+      {n:3, q:"The lacquered Japanese sword scabbard — as beautiful as the blade it protects.", enu:"(4)", answers:["SAYA"],
+       ex:"SAYA: the scabbard of a Japanese sword — typically lacquered wood covered in same (ray skin), kept in matching paired sets with the tsuka handle. A fine saya is itself a work of art, and collectors prize them accordingly."}
+    ]
+  },
+  {
+    id:10, tier:"Proper",
+    hidden:{ answer:"BOATSWAINS", hint:"First letters spell the petty officer who keeps the rigging in order." },
+    clues:[
+      {n:1, q:"The non-slip loop knot every sailor learns first — also the line from the ship's bow.", enu:"(7)", answers:["BOWLINE"],
+       ex:"Double definition: a bowline (the essential non-slip loop knot — the first knot taught to every sailor; it will not jam, and can always be undone); a bow line (the rope running from the vessel's bow to the shore or a buoy when mooring)."},
+      {n:2, q:"Oak tree, then a moment's hesitation — and you have the old tarred caulking fibre.", enu:"(5)", answers:["OAKUM"],
+       ex:"OAK (the tree) + UM (a moment's hesitation, an utterance of uncertainty) = OAKUM. Oakum is tarred hemp fibre obtained by unpicking old rope — used to caulk (seal) the gaps between planks of a wooden vessel."},
+      {n:3, q:"A bearing measured clockwise from north — used also to track the sun for garden planning.", enu:"(7)", answers:["AZIMUTH"],
+       ex:"Double definition: azimuth (a directional bearing measured clockwise from true north — the navigator's standard); the solar azimuth (the compass direction of the sun at any given time, used by gardeners to plan beds and shade)."},
+      {n:4, q:"Drag a net behind a vessel — or search a large library methodically.", enu:"(5)", answers:["TRAWL"],
+       ex:"Double definition: to trawl (fish by dragging a net along the seabed); to trawl (search through a large quantity methodically — as one trawls through a shelf of Clancy novels looking for the one you haven't read yet)."},
+      {n:5, q:"A mast, boom, or yard — or to box in training, as Reacher occasionally does.", enu:"(4)", answers:["SPAR"],
+       ex:"Double definition: a spar (any of the poles used in a vessel's rig — masts, booms, gaffs, yards, bowsprits — they are collectively 'the spars'); to spar (to box or fight for practice — Reacher spars, usually without gloves and frequently for reasons beyond training)."},
+      {n:6, q:"The drum-and-gear machine that hauls the anchor chain — serious deck machinery.", enu:"(8)", answers:["WINDLASS"],
+       ex:"Double definition: a windlass (the mechanical device that hauls in the anchor chain — drum, clutch, gears, and motor; without it, a heavy anchor cannot be raised); a windlass (any winding machine for lifting heavy loads — the same principle as the medieval well-windlass)."},
+      {n:7, q:"The ship's weight-dropper — or the person who holds a news broadcast steady.", enu:"(6)", answers:["ANCHOR"],
+       ex:"Double definition: a ship's anchor (the device that holds a vessel to the seabed in any weather); a news anchor (the presenter who holds a broadcast programme together — the 'anchor' of the show)."},
+      {n:8, q:"A ballast block in the keel — or the contents of every pirate's chest.", enu:"(5)", answers:["INGOT"],
+       ex:"Double definition: a ballast ingot (a block of iron or lead used as ballast, fitted low in a vessel's keel for stability and low centre of gravity); a gold ingot (the pirate's dream — the imagined cargo of every buccaneer tale from Treasure Island onwards)."},
+      {n:9, q:"Rearrange PANE for the tide of smallest range — though not around Alderney.", enu:"(4)", answers:["NEAP"],
+       ex:"Anagram of PANE = NEAP. The neap tide has the smallest range (occurs when sun and moon pull at right angles). Around Alderney, even a neap tide runs at several knots in the Race — the word 'neap' barely applies."},
+      {n:10, q:"Shallow water — or a large group of fish moving as one body.", enu:"(5)", answers:["SHOAL"],
+       ex:"Double definition: a shoal (an area of shallow water — a navigation hazard, carefully marked on the chart and to be given a wide berth); a shoal (a dense group of fish swimming together in formation — 'a shoal of mackerel swept past')."}
+    ],
+    bonus:[
+      {n:1, q:"The petty officer responsible for rigging, anchors, and deck equipment — from Old English 'boat servant'.", enu:"(9)", answers:["BOATSWAIN"],
+       ex:"BOATSWAIN (bosun): from Old English 'bātswein' — literally 'boat servant'. The petty officer responsible for maintenance of rigging, ground tackle, anchors, and deck equipment. The bosun's distinctive pipe (whistle) is still used to pipe orders on Royal Naval vessels."},
+      {n:2, q:"The sound the bosun's pipe makes to call all hands — or to pipe the admiral aboard.", enu:"(4,3,4)", answers:["PIPE THE SIDE"],
+       ex:"PIPE THE SIDE: the ceremony of piping a senior officer aboard, using the bosun's call — one of the oldest naval ceremonies, dating from the days when admirals were hoisted aboard in a chair (the bosun's chair) and the pipe controlled the haul."},
+      {n:3, q:"The order that makes all lines fast — or 'stop what you're doing' in any context.", enu:"(5)", answers:["BELAY"],
+       ex:"BELAY: to make fast a line (wrap it around a cleat or pin to secure it); also the order 'belay that!' — meaning 'disregard the last order' or 'stop immediately'. The bosun's most-used word, and one of the most versatile in the naval vocabulary."}
+    ]
+  },
+  /* ── Puzzle 21 (original Savage, verified) ── */
   {
     id:21, tier:"Savage",
     hidden:{ answer:"PROMONTORY", hint:"Read the first letter of each of the ten answers, in order — a headland emerges." },
