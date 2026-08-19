@@ -94,6 +94,7 @@
   /* ---------- Puzzle chrome ---------- */
   .puzzlebar{display:flex;align-items:center;justify-content:space-between;gap:16px;margin:26px 0 8px;flex-wrap:wrap}
   .puzzle-id{font-family:var(--disp);font-size:1.7em;font-weight:600}
+  .counter{font-family:var(--mono);font-size:.7em;letter-spacing:.12em;text-transform:uppercase;color:var(--cream-dim);border:1px solid var(--line);border-radius:2px;padding:4px 9px}
   .tier{font-family:var(--mono);font-size:.7em;letter-spacing:.14em;text-transform:uppercase;padding:4px 10px;border-radius:2px;border:1px solid currentColor}
   .tier.gentle{color:var(--green)}
   .tier.proper{color:var(--gold-bright)}
@@ -161,6 +162,8 @@
   .panel.on{display:block}
   table{width:100%;border-collapse:collapse;font-size:.95em}
   th,td{text-align:left;padding:10px 10px;border-bottom:1px solid var(--line)}
+  th.lead,td.lead{color:var(--gold-bright)}
+  td.lead.n{font-weight:500}
   th{font-family:var(--mono);font-size:.66em;letter-spacing:.1em;text-transform:uppercase;color:var(--cream-dim);font-weight:400}
   td.n{font-family:var(--mono);color:var(--gold)}
   tr.me td{background:rgba(200,162,75,.07)}
@@ -255,7 +258,7 @@
   <div class="panel on" id="panel-league" role="tabpanel">
     <p class="champ" id="champLine"></p>
     <table>
-      <thead><tr><th>Rank</th><th>Name</th><th>Done</th><th>Avg</th><th>Best</th><th>Perfect</th></tr></thead>
+      <thead><tr><th>Rank</th><th>Name</th><th class="lead">Perfect</th><th>Best</th><th>Avg</th><th>Done</th></tr></thead>
       <tbody id="leagueBody"></tbody>
     </table>
   </div>
@@ -1051,6 +1054,652 @@ const KEITHOGRAMS = [
       {n:3, q:"A washer, oddly recast, as a heavy mooring rope.", enu:"(6)", answers:["HAWSER"],
        ex:"Anagram of WASHER = HAWSER, a thick cable for mooring or towing."}
     ]
+  },
+  {
+    id:22, tier:"Proper",
+    hidden:{ answer:"GUNSLINGER", hint:"First letters name the hero of every spaghetti Western." },
+    clues:[
+      {n:1, q:"A small multi-fluked anchor — or a boarding hook thrown to catch a ledge.", enu:"(7)", answers:["GRAPNEL"],
+       ex:"Double definition: a grapnel (a small anchor); a grappling hook (thrown to catch a rail or a ledge — the stuff of adventure)."},
+      {n:2, q:"Beneath, then a pull — a swimmer's hidden enemy.", enu:"(8)", answers:["UNDERTOW"],
+       ex:"UNDER (beneath) + TOW (a pull) = UNDERTOW, the seaward current."},
+      {n:3, q:"The Roman sea god, trident in hand — and the eighth planet.", enu:"(7)", answers:["NEPTUNE"],
+       ex:"Double definition: Neptune (the Roman god of the sea, counterpart of the Greek Poseidon); Neptune (the eighth planet, named for him)."},
+      {n:4, q:"Shallow water — or a large group of fish.", enu:"(5)", answers:["SHOAL"],
+       ex:"Double definition: a shoal (shallow water); a shoal (a school of fish)."},
+      {n:5, q:"A vessel's sideways drift — or margin in a tight schedule.", enu:"(6)", answers:["LEEWAY"],
+       ex:"Double definition: leeway (sideways drift downwind); leeway (room to manoeuvre)."},
+      {n:6, q:"A narrow arm of the sea — or a pond's water feed.", enu:"(5)", answers:["INLET"],
+       ex:"Double definition: an inlet (a sea arm); an inlet (a water feed pipe)."},
+      {n:7, q:"The notch at a yard's end — or where an arrow meets its string.", enu:"(4)", answers:["NOCK"],
+       ex:"Double definition: a nock (a yard's notch); a nock (an arrow's notch)."},
+      {n:8, q:"The ship's kitchen — or a printer's long proof sheet.", enu:"(6)", answers:["GALLEY"],
+       ex:"Double definition: the galley (a ship's kitchen); a galley proof (a printer's early proof sheet)."},
+      {n:9, q:"The receding tide — or a steady decline.", enu:"(3)", answers:["EBB"],
+       ex:"Double definition: the ebb tide; to ebb (to decline)."},
+      {n:10, q:"A fishing line's spool — or what a gunfighter does when hit.", enu:"(4)", answers:["REEL"],
+       ex:"Double definition: a reel (a fishing spool); to reel (to stagger — as a gunfighter reels backward when shot)."}
+    ],
+    bonus:[
+      {n:1, q:"Sergio Leone's 1966 epic — 'The Good, the Bad and the ___'.", enu:"(4)", answers:["UGLY"],
+       ex:"THE GOOD, THE BAD AND THE UGLY: Sergio Leone's 1966 spaghetti Western, with Clint Eastwood as 'the Good', Lee Van Cleef as 'the Bad', and Eli Wallach as 'the Ugly' — set against the American Civil War."},
+      {n:2, q:"Ennio Morricone wrote the unforgettable one for that film — a coyote's wail on the soundtrack.", enu:"(5)", answers:["THEME","SCORE"],
+       ex:"THEME: Ennio Morricone's main theme for 'The Good, the Bad and the Ugly', with its famous coyote-howl motif, is among the most recognisable film music ever written."},
+      {n:3, q:"Clint Eastwood's near-silent spaghetti-Western hero — the Man with No ___.", enu:"(4)", answers:["NAME"],
+       ex:"THE MAN WITH NO NAME: Clint Eastwood's iconic poncho-clad character across Leone's 'Dollars' trilogy — laconic, deadly, and never formally named."}
+    ]
+  },
+  {
+    id:23, tier:"Proper",
+    hidden:{ answer:"SYMPHONIES", hint:"First letters name the grandest works in the classical repertoire." },
+    clues:[
+      {n:1, q:"Join two rope ends — or the rum order after a victory.", enu:"(6)", answers:["SPLICE"],
+       ex:"Double definition: to splice (join rope ends); splice the main brace (the rum order)."},
+      {n:2, q:"A vessel swinging off its heading, side to side — an unsteady wandering.", enu:"(6)", answers:["YAWING"],
+       ex:"Double definition: yawing (a vessel's side-to-side swing off its intended heading); yawing (any unsteady wandering from a straight course)."},
+      {n:3, q:"The tallest spar on a square-rigged ship — or the autumn crop of the forest floor.", enu:"(4)", answers:["MAST"],
+       ex:"Double definition: a mast (the vertical spar supporting the sails); mast (the collective name for acorns and beechnuts — the autumn crop that feeds forest pigs)."},
+      {n:4, q:"The ship's sharpest point — facing into every sea.", enu:"(4)", answers:["PROW"],
+       ex:"Double definition: the prow (the foremost point of the bow); the prow (the leading edge that parts the waves)."},
+      {n:5, q:"Deck opening for cargo — or what a plot does as it thickens.", enu:"(5)", answers:["HATCH"],
+       ex:"Double definition: a hatch (a deck opening to the hold); to hatch (to devise a plan)."},
+      {n:6, q:"The deep blue — rearrange CANOE. (Debussy painted it in sound.)", enu:"(5)", answers:["OCEAN"],
+       ex:"Anagram of CANOE = OCEAN. Debussy's 'La Mer' is the great orchestral seascape."},
+      {n:7, q:"The notch at a yard's end — or where an arrow sits.", enu:"(4)", answers:["NOCK"],
+       ex:"Double definition: a nock (a yard's notch); a nock (an arrow's notch)."},
+      {n:8, q:"A narrow arm of the sea — or a garden pond's water feed.", enu:"(5)", answers:["INLET"],
+       ex:"Double definition: an inlet (a sea arm); an inlet (a water feed pipe)."},
+      {n:9, q:"A circular back-current — or a swirl in a garden stream.", enu:"(4)", answers:["EDDY"],
+       ex:"Double definition: an eddy (a circular counter-current in water); an eddy (a swirl in a garden stream)."},
+      {n:10, q:"Shallow water — or a large group of fish.", enu:"(5)", answers:["SHOAL"],
+       ex:"Double definition: a shoal (shallow water); a shoal (a fish school)."}
+    ],
+    bonus:[
+      {n:1, q:"Beethoven's last, the 'Choral', famous for its 'Ode to Joy' — its number.", enu:"(5)", answers:["NINTH","NINE"],
+       ex:"BEETHOVEN'S NINTH: the 'Choral' Symphony (1824), whose finale sets Schiller's 'Ode to Joy' — the first great symphony to include a chorus, and the summit of the form."},
+      {n:2, q:"The German composer of 'The Ring' — whose 'Ride of the Valkyries' storms through many a war film.", enu:"(6)", answers:["WAGNER"],
+       ex:"RICHARD WAGNER: composer of the four-opera cycle 'Der Ring des Nibelungen'. His 'Ride of the Valkyries' is among the most recognisable pieces in all music — famously used in 'Apocalypse Now'."},
+      {n:3, q:"Antonín Dvořák's 'New World' one — the symphony he wrote in America.", enu:"(3,5)", answers:["NEW WORLD","NEWWORLD"],
+       ex:"DVOŘÁK'S 'NEW WORLD' SYMPHONY (No. 9): written during his stay in the United States (1893), drawing on the spirit of American folk and spiritual melodies. Its Largo is beloved the world over."}
+    ]
+  },
+  {
+    id:24, tier:"Proper",
+    hidden:{ answer:"BATTALIONS", hint:"First letters name the units that march in every great war film." },
+    clues:[
+      {n:1, q:"A three-masted sailing vessel — or a dog's warning.", enu:"(4)", answers:["BARK"],
+       ex:"Double definition: a bark (a sailing vessel); a bark (a dog's call)."},
+      {n:2, q:"The ship's weight-dropper — or a news presenter.", enu:"(6)", answers:["ANCHOR"],
+       ex:"Double definition: a ship's anchor; a news anchor."},
+      {n:3, q:"Change direction through the wind — or a small nail.", enu:"(4)", answers:["TACK"],
+       ex:"Double definition: to tack (change course); a tack (a nail)."},
+      {n:4, q:"Tropical hardwood — for ship decks and garden benches.", enu:"(4)", answers:["TEAK"],
+       ex:"Double definition: teak (ship-deck timber); teak (garden furniture wood)."},
+      {n:5, q:"The ship's weight-dropper — or a presenter. (Echo of clue 2.)", enu:"(6)", answers:["ANCHOR"],
+       ex:"Double definition: a ship's anchor; a news anchor."},
+      {n:6, q:"A vessel's sideways drift — or margin in a schedule.", enu:"(6)", answers:["LEEWAY"],
+       ex:"Double definition: leeway (sideways drift); leeway (margin)."},
+      {n:7, q:"A narrow arm of the sea — or a pond's feed pipe.", enu:"(5)", answers:["INLET"],
+       ex:"Double definition: an inlet (a sea arm); an inlet (a feed pipe)."},
+      {n:8, q:"The deep blue — rearrange CANOE.", enu:"(5)", answers:["OCEAN"],
+       ex:"Anagram of CANOE = OCEAN."},
+      {n:9, q:"The notch at a yard's end — or where an arrow sits.", enu:"(4)", answers:["NOCK"],
+       ex:"Double definition: a nock (a yard's notch); a nock (an arrow's notch)."},
+      {n:10, q:"Shallow water — or a large group of fish.", enu:"(5)", answers:["SHOAL"],
+       ex:"Double definition: a shoal (shallow water); a shoal (a fish school)."}
+    ],
+    bonus:[
+      {n:1, q:"Robert Aldrich's 1967 film — twelve condemned soldiers on a suicide mission: 'The Dirty ___'.", enu:"(5)", answers:["DOZEN"],
+       ex:"THE DIRTY DOZEN: Robert Aldrich's 1967 war film in which Lee Marvin trains twelve military prisoners for a near-suicidal raid on a German château before D-Day — a classic of the 'men on a mission' genre."},
+      {n:2, q:"The 1961 film of MacLean's novel — commandos scale a cliff to silence two great German guns: 'The Guns of ___'.", enu:"(8)", answers:["NAVARONE"],
+       ex:"THE GUNS OF NAVARONE: the 1961 war epic (from Alistair MacLean's novel) in which an Allied team scales a sheer cliff to destroy two enormous German guns commanding a vital sea passage — a maritime war film to its core."},
+      {n:3, q:"Steve McQueen's motorcycle leap made this 1963 POW film famous: 'The Great ___'.", enu:"(6)", answers:["ESCAPE"],
+       ex:"THE GREAT ESCAPE: the 1963 film based on the real mass breakout from Stalag Luft III, immortalised by Steve McQueen's motorcycle leap and Elmer Bernstein's jaunty march."}
+    ]
+  },
+  {
+    id:25, tier:"Savage",
+    hidden:{ answer:"CRESCENDOS", hint:"First letters name the swelling climaxes of a great score." },
+    clues:[
+      {n:1, q:"The anchor chain — or a tenth of a nautical mile, or a message from abroad.", enu:"(5)", answers:["CABLE"],
+       ex:"Double definition: a cable (the anchor chain; a distance of one-tenth of a nautical mile; a telegraphed overseas message)."},
+      {n:2, q:"Rearrange REINS for a boatbuilder's sealant.", enu:"(5)", answers:["RESIN"],
+       ex:"Anagram of REINS = RESIN, used to seal and waterproof hulls (and produced naturally by pines)."},
+      {n:3, q:"A circular back-current — or a swirl in a garden stream.", enu:"(4)", answers:["EDDY"],
+       ex:"Double definition: an eddy (a circular counter-current); an eddy (a swirl in a stream)."},
+      {n:4, q:"Join two rope ends — or the rum order after a victory.", enu:"(6)", answers:["SPLICE"],
+       ex:"Double definition: to splice (join rope ends); splice the main brace."},
+      {n:5, q:"The anchor cable — or a message abroad. (A motif returns, as in music.)", enu:"(5)", answers:["CABLE"],
+       ex:"Double definition: a cable (anchor chain; a distance; an overseas message). A deliberate reprise, as a theme recurs across a symphony."},
+      {n:6, q:"The receding tide — or a decrescendo of the sea.", enu:"(3)", answers:["EBB"],
+       ex:"Double definition: the ebb tide; to ebb (to fade — as a phrase ebbs to a whisper)."},
+      {n:7, q:"The notch at a yard's end — or where an arrow rests.", enu:"(4)", answers:["NOCK"],
+       ex:"Double definition: a nock (a yard's notch); a nock (an arrow's notch)."},
+      {n:8, q:"The crane arm from which a lifeboat hangs.", enu:"(5)", answers:["DAVIT"],
+       ex:"Double definition: a davit (the arm from which a lifeboat is suspended); to davit (to hoist)."},
+      {n:9, q:"The deep blue — rearrange CANOE. (Debussy painted it in sound.)", enu:"(5)", answers:["OCEAN"],
+       ex:"Anagram of CANOE = OCEAN. Debussy's 'La Mer' is the great orchestral seascape."},
+      {n:10, q:"Shallow water — or a large group of fish.", enu:"(5)", answers:["SHOAL"],
+       ex:"Double definition: a shoal (shallow water); a shoal (a fish school)."}
+    ],
+    bonus:[
+      {n:1, q:"The Russian composer of '1812', which ends with real cannon fire.", enu:"(11)", answers:["TCHAIKOVSKY"],
+       ex:"PYOTR ILYICH TCHAIKOVSKY: composer of the '1812 Overture', which famously calls for cannon fire in its climax to depict the defeat of Napoleon's army — a favourite of grand outdoor concerts."},
+      {n:2, q:"Handel's suite composed to be played from barges on the Thames: 'Water ___'.", enu:"(5)", answers:["MUSIC"],
+       ex:"HANDEL'S 'WATER MUSIC': composed in 1717 to be performed by an orchestra on a barge accompanying King George I's procession down the Thames — perhaps the most maritime of all classical suites."},
+      {n:3, q:"Wagner's thundering piece, made infamous by a helicopter attack in 'Apocalypse Now': 'Ride of the ___'.", enu:"(9)", answers:["VALKYRIES"],
+       ex:"'RIDE OF THE VALKYRIES': from Wagner's opera 'Die Walküre'. Its thunderous brass accompanies the helicopter assault in 'Apocalypse Now' — the meeting point of classical music and the war film."}
+    ]
+  },
+  {
+    id:26, tier:"Savage",
+    hidden:{ answer:"DESPERADOS", hint:"First letters name the outlaws of the Old West." },
+    clues:[
+      {n:1, q:"The crane arm from which a lifeboat hangs — always ready.", enu:"(5)", answers:["DAVIT"],
+       ex:"Double definition: a davit (the arm from which a lifeboat is suspended); to davit (to hoist)."},
+      {n:2, q:"The receding tide — or a steady decline.", enu:"(3)", answers:["EBB"],
+       ex:"Double definition: the ebb tide; to ebb (to decline)."},
+      {n:3, q:"Join two rope ends — or the rum order.", enu:"(6)", answers:["SPLICE"],
+       ex:"Double definition: to splice (join rope ends); splice the main brace."},
+      {n:4, q:"A ship's bow-down bow-up motion — or how high or low a note sounds.", enu:"(5)", answers:["PITCH"],
+       ex:"Double definition: to pitch (a vessel's fore-and-aft motion in head seas); pitch (the musical property of a note — and pine tar for caulking seams)."},
+      {n:5, q:"The receding tide — or a decline. (Echo of clue 2.)", enu:"(3)", answers:["EBB"],
+       ex:"Double definition: the ebb tide; to ebb (to decline)."},
+      {n:6, q:"Rearrange REINS for a boatbuilder's sealant — fitting for a Western.", enu:"(5)", answers:["RESIN"],
+       ex:"Anagram of REINS = RESIN, used to seal hulls (and reins being just the thing a desperado grips)."},
+      {n:7, q:"The ship's weight-dropper — or a news presenter.", enu:"(6)", answers:["ANCHOR"],
+       ex:"Double definition: a ship's anchor; a news anchor."},
+      {n:8, q:"The depth a vessel draws — or a pint pulled from the cask.", enu:"(7)", answers:["DRAUGHT"],
+       ex:"Double definition: the draught (how deep a vessel sits in the water); a draught (a measure of beer drawn from a cask — welcome after a long ride)."},
+      {n:9, q:"The deep blue — rearrange CANOE.", enu:"(5)", answers:["OCEAN"],
+       ex:"Anagram of CANOE = OCEAN."},
+      {n:10, q:"Shallow water — or a large group of fish.", enu:"(5)", answers:["SHOAL"],
+       ex:"Double definition: a shoal (shallow water); a shoal (a fish school)."}
+    ],
+    bonus:[
+      {n:1, q:"The Greek hero of the Odyssey, who lashed himself to the mast to hear the Sirens.", enu:"(8)", answers:["ODYSSEUS","ULYSSES"],
+       ex:"ODYSSEUS (Ulysses to the Romans): the wily Greek hero of Homer's Odyssey. To hear the Sirens' song and live, he had himself lashed to the mast while his crew stopped their ears with wax — the original maritime myth."},
+      {n:2, q:"The sea nymphs whose song lured sailors onto the rocks.", enu:"(6)", answers:["SIRENS"],
+       ex:"THE SIRENS: creatures of Greek myth whose irresistible singing lured mariners to wreck their ships on the rocks. Their name survives in the 'siren' that still warns of danger."},
+      {n:3, q:"The Greek god of the sea, brother of Zeus, who wields a trident.", enu:"(8)", answers:["POSEIDON"],
+       ex:"POSEIDON: the Greek god of the sea, earthquakes, and horses, brother of Zeus and Hades. His trident could raise storms or calm the waters — the ultimate authority over every sailor's fate."}
+    ]
+  },
+  {
+    id:27, tier:"Proper",
+    hidden:{ answer:"ORCHESTRAS", hint:"First letters name the ensembles that play the symphonies." },
+    clues:[
+      {n:1, q:"The deep blue — rearrange CANOE, then imagine Debussy scoring it.", enu:"(5)", answers:["OCEAN"],
+       ex:"Anagram of CANOE = OCEAN. Debussy's 'La Mer' is the great orchestral seascape."},
+      {n:2, q:"Sticky stuff a violinist rubs on the bow — rearrange IRONS.", enu:"(5)", answers:["ROSIN"],
+       ex:"Anagram of IRONS = ROSIN — the resin a string player rubs on the bow hair to grip the strings. (Also spelled resin; on a ship it seals the seams.)"},
+      {n:3, q:"The anchor chain — or a tenth of a nautical mile, or a message from abroad.", enu:"(5)", answers:["CABLE"],
+       ex:"Double definition: a cable (the anchor chain; a distance of one-tenth of a nautical mile; a telegraphed overseas message)."},
+      {n:4, q:"Hospital plus elm tree — at the wheel.", enu:"(4)", answers:["HELM"],
+       ex:"H (hospital) + ELM (tree) = HELM, the steering position."},
+      {n:5, q:"The receding tide — or the diminuendo of the sea.", enu:"(3)", answers:["EBB"],
+       ex:"Double definition: the ebb tide; to ebb (to fade — as an orchestral phrase ebbs to silence)."},
+      {n:6, q:"Join two rope ends — or the rum order after a victory.", enu:"(6)", answers:["SPLICE"],
+       ex:"Double definition: to splice (join rope ends); splice the main brace (the rum order)."},
+      {n:7, q:"The high male opera voice, we hear, applies fresh ink — rearrange TONER.", enu:"(5)", answers:["TENOR"],
+       ex:"Anagram of TONER = TENOR — the high male operatic voice (Caruso, Pavarotti). Also: the general sense or 'tenor' of a piece."},
+      {n:8, q:"A fishing line's spool — or what a shot gunfighter does.", enu:"(4)", answers:["REEL"],
+       ex:"Double definition: a reel (a fishing spool); to reel (to stagger)."},
+      {n:9, q:"The ship's weight-dropper — or a news presenter.", enu:"(6)", answers:["ANCHOR"],
+       ex:"Double definition: a ship's anchor; a news anchor."},
+      {n:10, q:"Shallow water — or a large group of fish, moving like a string section in unison.", enu:"(5)", answers:["SHOAL"],
+       ex:"Double definition: a shoal (shallow water); a shoal (a school of fish moving as one)."}
+    ],
+    bonus:[
+      {n:1, q:"The one who stands before the orchestra, baton in hand — this puzzle's cousin theme.", enu:"(9)", answers:["CONDUCTOR"],
+       ex:"CONDUCTOR: the musician who directs an orchestra, setting tempo and shaping the performance with a baton. Great names: Karajan, Bernstein, Toscanini."},
+      {n:2, q:"Vaughan Williams wrote 'A Sea ___' — his first symphony, setting Walt Whitman's ocean poetry.", enu:"(8)", answers:["SYMPHONY"],
+       ex:"A SEA SYMPHONY (1910): Ralph Vaughan Williams's First Symphony, a vast choral work setting the sea poetry of Walt Whitman — one of the most maritime works in the classical canon."},
+      {n:3, q:"Britten's opera about a Suffolk fisherman hounded by his village: 'Peter ___'.", enu:"(6)", answers:["GRIMES"],
+       ex:"PETER GRIMES (1945): Benjamin Britten's opera about a troubled Suffolk fisherman, set on the storm-battered East Anglian coast. Its orchestral 'Sea Interludes' are performed in their own right."}
+    ]
+  },
+  {
+    id:28, tier:"Proper",
+    hidden:{ answer:"CENTURIONS", hint:"First letters name the officers who led a hundred Roman soldiers." },
+    clues:[
+      {n:1, q:"The ship's cook — or to falsify the accounts.", enu:"(4)", answers:["COOK"],
+       ex:"Double definition: the ship's cook; to cook the books."},
+      {n:2, q:"The receding tide — or a general's retreat.", enu:"(3)", answers:["EBB"],
+       ex:"Double definition: the ebb tide; to ebb (to decline — as an army's fortunes ebb)."},
+      {n:3, q:"The notch at a yard's end — or where a Roman archer sets his arrow.", enu:"(4)", answers:["NOCK"],
+       ex:"Double definition: a nock (a yard's notch); a nock (an arrow's notch, where it meets the bowstring)."},
+      {n:4, q:"Change direction through the wind — or a small nail hammered into a shield.", enu:"(4)", answers:["TACK"],
+       ex:"Double definition: to tack (change a sailing course); a tack (a small nail)."},
+      {n:5, q:"Beneath, then a pull — a hidden current that drowns the unwary.", enu:"(8)", answers:["UNDERTOW"],
+       ex:"UNDER (beneath) + TOW (a pull) = UNDERTOW."},
+      {n:6, q:"A fishing line's spool — or what a wounded legionary does.", enu:"(4)", answers:["REEL"],
+       ex:"Double definition: a reel (a fishing spool); to reel (to stagger, wounded)."},
+      {n:7, q:"A narrow arm of the sea — or a pond's water feed.", enu:"(5)", answers:["INLET"],
+       ex:"Double definition: an inlet (a sea arm); an inlet (a water feed pipe)."},
+      {n:8, q:"The deep blue — rearrange CANOE.", enu:"(5)", answers:["OCEAN"],
+       ex:"Anagram of CANOE = OCEAN."},
+      {n:9, q:"The notch at a yard's end — or an arrow's rest. (Echo of clue 3.)", enu:"(4)", answers:["NOCK"],
+       ex:"Double definition: a nock (a yard's notch); a nock (an arrow's notch)."},
+      {n:10, q:"Shallow water — or a great group of fish, massed like a legion.", enu:"(5)", answers:["SHOAL"],
+       ex:"Double definition: a shoal (shallow water); a shoal (a massed school of fish)."}
+    ],
+    bonus:[
+      {n:1, q:"The 1959 Roman epic, its chariot race unmatched — 'Ben-___'.", enu:"(3)", answers:["HUR"],
+       ex:"BEN-HUR (1959): William Wyler's Roman epic starring Charlton Heston, famous for its nine-minute chariot race — one of the greatest action sequences ever filmed. Won a record eleven Oscars."},
+      {n:2, q:"Kirk Douglas led the slave revolt in Kubrick's 1960 epic — 'I am ___!'", enu:"(9)", answers:["SPARTACUS"],
+       ex:"SPARTACUS (1960): Stanley Kubrick's epic about the historical slave revolt against Rome, with its unforgettable 'I'm Spartacus!' scene of collective defiance."},
+      {n:3, q:"The Roman warship rowed by banks of oarsmen — three tiers of them.", enu:"(7)", answers:["TRIREME"],
+       ex:"TRIREME: the ancient Mediterranean warship powered by three banks of oars on each side, tipped with a bronze ram at the bow. The backbone of Greek and Roman navies."}
+    ]
+  },
+  {
+    id:29, tier:"Proper",
+    hidden:{ answer:"STAMPEDING", hint:"First letters name what the herd does when the guns go off." },
+    clues:[
+      {n:1, q:"Join two rope ends — or the rum order after a victory.", enu:"(6)", answers:["SPLICE"],
+       ex:"Double definition: to splice (join rope ends); splice the main brace."},
+      {n:2, q:"Change direction through the wind — or a cowboy's small nail.", enu:"(4)", answers:["TACK"],
+       ex:"Double definition: to tack (change a sailing course); tack (also the saddle and bridle of a horse — a Western double meaning)."},
+      {n:3, q:"The ship's weight-dropper — or a news presenter.", enu:"(6)", answers:["ANCHOR"],
+       ex:"Double definition: a ship's anchor; a news anchor."},
+      {n:4, q:"The tallest spar on a square-rigger — or the autumn crop of the forest floor.", enu:"(4)", answers:["MAST"],
+       ex:"Double definition: a mast (the vertical spar); mast (acorns and beechnuts, the forest floor's autumn crop)."},
+      {n:5, q:"A ship's bow-down bow-up motion — or how a note sounds, high or low.", enu:"(5)", answers:["PITCH"],
+       ex:"Double definition: to pitch (a vessel's fore-and-aft motion); pitch (the musical property of a note — a nod to the classical theme)."},
+      {n:6, q:"The receding tide — or a steady decline.", enu:"(3)", answers:["EBB"],
+       ex:"Double definition: the ebb tide; to ebb (to decline)."},
+      {n:7, q:"The crane arm from which a lifeboat hangs.", enu:"(5)", answers:["DAVIT"],
+       ex:"Double definition: a davit (the arm from which a lifeboat is suspended); to davit (to hoist)."},
+      {n:8, q:"A narrow arm of the sea — or a pond's water feed.", enu:"(5)", answers:["INLET"],
+       ex:"Double definition: an inlet (a sea arm); an inlet (a water feed pipe)."},
+      {n:9, q:"The notch at a yard's end — or where the outlaw's arrow rests.", enu:"(4)", answers:["NOCK"],
+       ex:"Double definition: a nock (a yard's notch); a nock (an arrow's notch)."},
+      {n:10, q:"A small multi-fluked anchor — or the hook a hero throws to scale a cliff.", enu:"(7)", answers:["GRAPNEL"],
+       ex:"Double definition: a grapnel (a small anchor); a grappling hook."}
+    ],
+    bonus:[
+      {n:1, q:"John Ford's 1939 Western that made John Wayne a star, set aboard a coach: '___'.", enu:"(10)", answers:["STAGECOACH"],
+       ex:"STAGECOACH (1939): John Ford's landmark Western, filmed in Monument Valley, which made a star of John Wayne. A group of strangers share a perilous coach journey through Apache country."},
+      {n:2, q:"The 1960 Western remake of Kurosawa's 'Seven Samurai': 'The ___ Seven'.", enu:"(11)", answers:["MAGNIFICENT"],
+       ex:"THE MAGNIFICENT SEVEN (1960): the classic Western (a remake of Kurosawa's 'Seven Samurai') in which seven gunfighters defend a Mexican village. Elmer Bernstein's theme is one of the most rousing ever written — the myth, music and Western threads all meeting at once."},
+      {n:3, q:"Gary Cooper stands alone against the outlaws in this 1952 Western: 'High ___'.", enu:"(4)", answers:["NOON"],
+       ex:"HIGH NOON (1952): Gary Cooper's marshal faces a gang alone when the town abandons him, the tension building in real time toward the noon showdown. Its theme song won an Oscar."}
+    ]
+  },
+  {
+    id:30, tier:"Savage",
+    hidden:{ answer:"LABYRINTHS", hint:"First letters name the maze where the Minotaur waited." },
+    clues:[
+      {n:1, q:"A vessel's sideways drift — or the room a hero needs to manoeuvre.", enu:"(6)", answers:["LEEWAY"],
+       ex:"Double definition: leeway (a vessel's sideways drift downwind); leeway (room to manoeuvre)."},
+      {n:2, q:"The ship's weight-dropper — or a news presenter.", enu:"(6)", answers:["ANCHOR"],
+       ex:"Double definition: a ship's anchor; a news anchor."},
+      {n:3, q:"A three-masted vessel — or what Cerberus does at the gates of Hades.", enu:"(4)", answers:["BARK"],
+       ex:"Double definition: a bark (a three-masted sailing vessel); a bark (a dog's call — and Cerberus, the three-headed hound of Hades, barks louder than most)."},
+      {n:4, q:"A vessel swinging off its heading — an unsteady wandering, as through a maze.", enu:"(6)", answers:["YAWING"],
+       ex:"Double definition: yawing (a vessel's side-to-side swing off its heading); yawing (any wandering from a straight course)."},
+      {n:5, q:"Rearrange REINS for a boatbuilder's sealant.", enu:"(5)", answers:["RESIN"],
+       ex:"Anagram of REINS = RESIN, used to seal and waterproof hulls (and produced by pines)."},
+      {n:6, q:"A ballast block in the keel — or the golden thread's reward at the maze's heart.", enu:"(5)", answers:["INGOT"],
+       ex:"Double definition: a ballast ingot (iron or lead ballast); a gold ingot (treasure — Theseus followed Ariadne's thread, not gold, but the maze is where reward and death both wait)."},
+      {n:7, q:"The notch at a yard's end — or where Theseus set his arrow.", enu:"(4)", answers:["NOCK"],
+       ex:"Double definition: a nock (a yard's notch); a nock (an arrow's notch, where it meets the bowstring)."},
+      {n:8, q:"Change direction through the wind — or a small nail.", enu:"(4)", answers:["TACK"],
+       ex:"Double definition: to tack (change a sailing course); a tack (a small nail)."},
+      {n:9, q:"Hospital plus elm tree — at the wheel.", enu:"(4)", answers:["HELM"],
+       ex:"H (hospital) + ELM (tree) = HELM, the steering position."},
+      {n:10, q:"Rearrange RINSE for the sea-nymph whose song wrecked ships.", enu:"(5)", answers:["SIREN"],
+       ex:"Anagram of RINSE = SIREN — the creature of Greek myth whose song lured sailors onto the rocks (and the warning device that still bears her name)."}
+    ],
+    bonus:[
+      {n:1, q:"The bull-headed monster at the heart of the Cretan maze.", enu:"(8)", answers:["MINOTAUR"],
+       ex:"THE MINOTAUR: the monster with a man's body and a bull's head, kept at the centre of the Labyrinth on Crete, and slain by Theseus using Ariadne's thread to find his way out."},
+      {n:2, q:"The boy who flew too near the sun on wings of wax and feathers.", enu:"(6)", answers:["ICARUS"],
+       ex:"ICARUS: son of Daedalus, who built wings of feathers and wax to escape Crete. Ignoring his father's warning, he flew too near the sun; the wax melted and he fell into the sea that bears his name."},
+      {n:3, q:"The ferryman who rows the dead across the river Styx.", enu:"(6)", answers:["CHARON"],
+       ex:"CHARON: the ferryman of Hades who carries the souls of the dead across the rivers Styx and Acheron — for the price of a coin placed in the mouth of the deceased. The original grim boatman."}
+    ]
+  },
+  {
+    id:31, tier:"Savage",
+    hidden:{ answer:"CONDUCTORS", hint:"First letters name those who wield the baton before the orchestra." },
+    clues:[
+      {n:1, q:"The anchor chain — or a tenth of a nautical mile, or a wire sent abroad.", enu:"(5)", answers:["CABLE"],
+       ex:"Double definition: a cable (the anchor chain; a distance of one-tenth of a nautical mile; a telegraphed message)."},
+      {n:2, q:"The deep blue — rearrange CANOE, as Debussy did in sound.", enu:"(5)", answers:["OCEAN"],
+       ex:"Anagram of CANOE = OCEAN. Debussy's 'La Mer' is the great orchestral seascape."},
+      {n:3, q:"The notch at a yard's end — or where an arrow rests.", enu:"(4)", answers:["NOCK"],
+       ex:"Double definition: a nock (a yard's notch); a nock (an arrow's notch)."},
+      {n:4, q:"The crane arm from which a lifeboat hangs.", enu:"(5)", answers:["DAVIT"],
+       ex:"Double definition: a davit (the arm from which a lifeboat is suspended); to davit (to hoist)."},
+      {n:5, q:"Beneath, then a pull — a hidden current, deadly as a whirlpool.", enu:"(8)", answers:["UNDERTOW"],
+       ex:"UNDER (beneath) + TOW (a pull) = UNDERTOW, the seaward current."},
+      {n:6, q:"The anchor cable — or a wire abroad. (A motif returns, as in a symphony.)", enu:"(5)", answers:["CABLE"],
+       ex:"Double definition: a cable (anchor chain; a distance; an overseas wire). A deliberate reprise, as a theme recurs across a movement."},
+      {n:7, q:"The high male opera voice, we hear, refills the printer — rearrange TONER.", enu:"(5)", answers:["TENOR"],
+       ex:"Anagram of TONER = TENOR — the high male operatic voice; also the general drift or 'tenor' of a piece."},
+      {n:8, q:"The visible offshore distance — buried in a fit of scoffing.", enu:"(6)", answers:["OFFING"],
+       ex:"Hidden word: scOFFING. 'In the offing' = in view out to sea, just over the horizon."},
+      {n:9, q:"A fishing line's spool — or what a shot gunfighter does.", enu:"(4)", answers:["REEL"],
+       ex:"Double definition: a reel (a fishing spool); to reel (to stagger)."},
+      {n:10, q:"Shallow water — or a large group of fish moving in perfect ensemble.", enu:"(5)", answers:["SHOAL"],
+       ex:"Double definition: a shoal (shallow water); a shoal (a school of fish moving as one, like a well-drilled string section)."}
+    ],
+    bonus:[
+      {n:1, q:"Rimsky-Korsakov's dazzling suite based on the Arabian Nights: '___'.", enu:"(12)", answers:["SCHEHERAZADE"],
+       ex:"SCHEHERAZADE (1888): Rimsky-Korsakov's symphonic suite inspired by the '1001 Nights', with its surging depiction of Sinbad's ship on the sea — a masterpiece of orchestral colour, and thoroughly maritime."},
+      {n:2, q:"Mendelssohn's overture inspired by a sea cave in the Hebrides: 'Fingal's ___'.", enu:"(4)", answers:["CAVE"],
+       ex:"FINGAL'S CAVE (The Hebrides Overture, 1830): Mendelssohn's concert overture evoking the great sea cave on the island of Staffa, its rolling theme conjuring the swell of the Atlantic."},
+      {n:3, q:"Debussy's shimmering orchestral portrait of the sea: 'La ___'.", enu:"(3)", answers:["MER"],
+       ex:"LA MER (1905): Claude Debussy's three orchestral sketches of the sea — 'From dawn to noon on the sea', 'Play of the waves', and 'Dialogue of the wind and the sea'. The supreme musical seascape."}
+    ]
+  },
+  {
+    id:32, tier:"Proper",
+    hidden:{ answer:"TOUCHLINES", hint:"First letters name the boundaries the winger dares not cross." },
+    clues:[
+      {n:1, q:"Change direction through the wind — or a small nail.", enu:"(4)", answers:["TACK"],
+       ex:"Double definition: to tack (change a sailing course); a tack (a small nail)."},
+      {n:2, q:"The deep blue — rearrange CANOE.", enu:"(5)", answers:["OCEAN"],
+       ex:"Anagram of CANOE = OCEAN."},
+      {n:3, q:"Beneath, then a pull — a hidden current that catches swimmers.", enu:"(8)", answers:["UNDERTOW"],
+       ex:"UNDER (beneath) + TOW (a pull) = UNDERTOW."},
+      {n:4, q:"The anchor chain — or a tenth of a nautical mile, or a wire from abroad.", enu:"(5)", answers:["CABLE"],
+       ex:"Double definition: a cable (the anchor chain; a distance of one-tenth of a nautical mile; a telegraphed message)."},
+      {n:5, q:"Hospital plus elm tree — at the wheel.", enu:"(4)", answers:["HELM"],
+       ex:"H (hospital) + ELM (tree) = HELM, the steering position."},
+      {n:6, q:"A vessel's sideways drift — or the room a fly-half needs to run.", enu:"(6)", answers:["LEEWAY"],
+       ex:"Double definition: leeway (a vessel's sideways drift downwind); leeway (room to manoeuvre)."},
+      {n:7, q:"A narrow arm of the sea — or a pond's water feed.", enu:"(5)", answers:["INLET"],
+       ex:"Double definition: an inlet (a sea arm); an inlet (a water feed pipe)."},
+      {n:8, q:"The notch at a yard's end — or where an arrow rests.", enu:"(4)", answers:["NOCK"],
+       ex:"Double definition: a nock (a yard's notch); a nock (an arrow's notch)."},
+      {n:9, q:"The receding tide — or a steady decline.", enu:"(3)", answers:["EBB"],
+       ex:"Double definition: the ebb tide; to ebb (to decline)."},
+      {n:10, q:"Shallow water — or a large group of fish moving as one team.", enu:"(5)", answers:["SHOAL"],
+       ex:"Double definition: a shoal (shallow water); a shoal (a school of fish moving in unison)."}
+    ],
+    bonus:[
+      {n:1, q:"Rugby's oldest international fixture — England versus this thistle-wearing nation.", enu:"(8)", answers:["SCOTLAND"],
+       ex:"SCOTLAND: England v Scotland (first played 1871) is rugby union's oldest international fixture. The winner takes the Calcutta Cup — one of sport's most historic trophies."},
+      {n:2, q:"The five points scored by grounding the ball over the line.", enu:"(3)", answers:["TRY"],
+       ex:"TRY: worth five points, scored by grounding the ball over the opponent's goal line. The name survives from the days when the score itself was worthless but earned a 'try' at goal."},
+      {n:3, q:"The New Zealand haka is performed before each of their matches — the team's famous nickname.", enu:"(3,6)", answers:["ALL BLACKS","ALLBLACKS"],
+       ex:"THE ALL BLACKS: the New Zealand national rugby team, named for their all-black strip, who perform the Māori haka challenge before every international — the most feared side in the game's history."}
+    ]
+  },
+  {
+    id:33, tier:"Proper",
+    hidden:{ answer:"GRANDSLAMS", hint:"First letters name the clean sweep of the Six Nations." },
+    clues:[
+      {n:1, q:"A small multi-fluked anchor — or the hook a hero throws to scale a cliff.", enu:"(7)", answers:["GRAPNEL"],
+       ex:"Double definition: a grapnel (a small anchor); a grappling hook."},
+      {n:2, q:"A fishing line's spool — or what a flattened prop forward does.", enu:"(4)", answers:["REEL"],
+       ex:"Double definition: a reel (a fishing spool); to reel (to stagger)."},
+      {n:3, q:"The ship's weight-dropper — or a news presenter.", enu:"(6)", answers:["ANCHOR"],
+       ex:"Double definition: a ship's anchor; a news anchor. (In rugby, the tighthead prop is the 'anchor' of the scrum.)"},
+      {n:4, q:"The notch at a yard's end — or where an arrow rests.", enu:"(4)", answers:["NOCK"],
+       ex:"Double definition: a nock (a yard's notch); a nock (an arrow's notch)."},
+      {n:5, q:"The crane arm from which a lifeboat hangs.", enu:"(5)", answers:["DAVIT"],
+       ex:"Double definition: a davit (the arm from which a lifeboat is suspended); to davit (to hoist)."},
+      {n:6, q:"Join two rope ends — or the rum order after a victory.", enu:"(6)", answers:["SPLICE"],
+       ex:"Double definition: to splice (join rope ends); splice the main brace."},
+      {n:7, q:"A vessel's sideways drift — or margin in a schedule.", enu:"(6)", answers:["LEEWAY"],
+       ex:"Double definition: leeway (sideways drift); leeway (margin)."},
+      {n:8, q:"The ship's weight-dropper — or a presenter. (Echo of clue 3.)", enu:"(6)", answers:["ANCHOR"],
+       ex:"Double definition: a ship's anchor; a news anchor."},
+      {n:9, q:"The tallest spar on a square-rigger — or the forest floor's autumn crop.", enu:"(4)", answers:["MAST"],
+       ex:"Double definition: a mast (the vertical spar); mast (acorns and beechnuts)."},
+      {n:10, q:"Shallow water — or a large group of fish.", enu:"(5)", answers:["SHOAL"],
+       ex:"Double definition: a shoal (shallow water); a shoal (a fish school)."}
+    ],
+    bonus:[
+      {n:1, q:"The annual northern-hemisphere championship of six nations — its current number of teams.", enu:"(3)", answers:["SIX"],
+       ex:"THE SIX NATIONS: the annual championship between England, Scotland, Wales, Ireland, France, and Italy. Formerly the Five Nations, it became Six when Italy joined in 2000."},
+      {n:2, q:"Beat all the others in the championship and you win the Grand ___.", enu:"(4)", answers:["SLAM"],
+       ex:"GRAND SLAM: won by a Six Nations team that beats all five of its rivals in a single championship — the ultimate clean sweep, and a rare achievement."},
+      {n:3, q:"The southern-hemisphere trophy contested by New Zealand and Australia: the ___ Cup.", enu:"(7)", answers:["BLEDISLOE"],
+       ex:"THE BLEDISLOE CUP: contested between New Zealand and Australia since 1931, one of rugby's fiercest rivalries. Named after Lord Bledisloe, a Governor-General of New Zealand."}
+    ]
+  },
+  {
+    id:34, tier:"Proper",
+    hidden:{ answer:"HARPOONERS", hint:"First letters name the men who stood in the bow of the whaleboat." },
+    clues:[
+      {n:1, q:"Hospital plus elm tree — at the wheel.", enu:"(4)", answers:["HELM"],
+       ex:"H (hospital) + ELM (tree) = HELM, the steering position."},
+      {n:2, q:"The ship's weight-dropper — or a news presenter.", enu:"(6)", answers:["ANCHOR"],
+       ex:"Double definition: a ship's anchor; a news anchor."},
+      {n:3, q:"A fishing line's spool — or what a struck man does.", enu:"(4)", answers:["REEL"],
+       ex:"Double definition: a reel (a fishing spool); to reel (to stagger)."},
+      {n:4, q:"A ship's bow-down bow-up motion — or how a note sounds, high or low.", enu:"(5)", answers:["PITCH"],
+       ex:"Double definition: to pitch (a vessel's fore-and-aft motion); pitch (the musical property of a note)."},
+      {n:5, q:"The deep blue — rearrange CANOE.", enu:"(5)", answers:["OCEAN"],
+       ex:"Anagram of CANOE = OCEAN."},
+      {n:6, q:"The visible offshore distance — buried in a fit of scoffing.", enu:"(6)", answers:["OFFING"],
+       ex:"Hidden word: scOFFING. 'In the offing' = just over the horizon."},
+      {n:7, q:"The notch at a yard's end — or where an arrow rests.", enu:"(4)", answers:["NOCK"],
+       ex:"Double definition: a nock (a yard's notch); a nock (an arrow's notch)."},
+      {n:8, q:"The receding tide — or a steady decline.", enu:"(3)", answers:["EBB"],
+       ex:"Double definition: the ebb tide; to ebb (to decline)."},
+      {n:9, q:"A fishing line's spool — or to stagger in a swell. (Echo of clue 3.)", enu:"(4)", answers:["REEL"],
+       ex:"Double definition: a reel (a fishing spool); to reel (to roll or stagger)."},
+      {n:10, q:"Shallow water — or a large group of fish.", enu:"(5)", answers:["SHOAL"],
+       ex:"Double definition: a shoal (shallow water); a shoal (a fish school)."}
+    ],
+    bonus:[
+      {n:1, q:"Herman Melville's novel of a captain's obsession with a white whale.", enu:"(4,4)", answers:["MOBY DICK","MOBYDICK"],
+       ex:"MOBY-DICK (1851): Herman Melville's epic novel of Captain Ahab's monomaniacal pursuit of the great white whale aboard the Pequod. One of the towering works of maritime literature."},
+      {n:2, q:"The obsessed captain of the Pequod, who lost a leg to the whale.", enu:"(4)", answers:["AHAB"],
+       ex:"CAPTAIN AHAB: the driven, one-legged master of the whaling ship Pequod in Moby-Dick, consumed by revenge against the whale that maimed him. 'From hell's heart I stab at thee.'"},
+      {n:3, q:"The barbed spear the harpooner hurled — this puzzle's namesake weapon.", enu:"(7)", answers:["HARPOON"],
+       ex:"HARPOON: the barbed throwing spear, attached to a line, used to strike whales from an open boat. The harpooner stood in the bow and struck at the captain's command — the most dangerous job at sea."}
+    ]
+  },
+  {
+    id:35, tier:"Savage",
+    hidden:{ answer:"SCRUMMAGES", hint:"First letters name where sixteen forwards contest the ball." },
+    clues:[
+      {n:1, q:"Join two rope ends — or the rum order after a victory.", enu:"(6)", answers:["SPLICE"],
+       ex:"Double definition: to splice (join rope ends); splice the main brace."},
+      {n:2, q:"The anchor chain — or a tenth of a nautical mile, or a wire from abroad.", enu:"(5)", answers:["CABLE"],
+       ex:"Double definition: a cable (the anchor chain; a distance; a telegraphed message)."},
+      {n:3, q:"A fishing line's spool — or what a flattened flanker does.", enu:"(4)", answers:["REEL"],
+       ex:"Double definition: a reel (a fishing spool); to reel (to stagger)."},
+      {n:4, q:"Beneath, then a pull — a hidden current, deadly as a whirlpool.", enu:"(8)", answers:["UNDERTOW"],
+       ex:"UNDER (beneath) + TOW (a pull) = UNDERTOW."},
+      {n:5, q:"A permanent buoy to tie up to — or to make fast alongside.", enu:"(7)", answers:["MOORING"],
+       ex:"Double definition: a mooring (a permanent buoy or anchor for securing a vessel); to moor (to tie up)."},
+      {n:6, q:"The tallest spar on a square-rigger — or the forest floor's autumn crop.", enu:"(4)", answers:["MAST"],
+       ex:"Double definition: a mast (the vertical spar); mast (acorns and beechnuts)."},
+      {n:7, q:"The ship's weight-dropper — or the tighthead who steadies the scrum.", enu:"(6)", answers:["ANCHOR"],
+       ex:"Double definition: a ship's anchor; to anchor a scrum (the prop who holds it firm — a rugby double meaning)."},
+      {n:8, q:"A small multi-fluked anchor — or a grappling hook.", enu:"(7)", answers:["GRAPNEL"],
+       ex:"Double definition: a grapnel (a small anchor); a grappling hook."},
+      {n:9, q:"The receding tide — or a steady decline.", enu:"(3)", answers:["EBB"],
+       ex:"Double definition: the ebb tide; to ebb (to decline)."},
+      {n:10, q:"Shallow water — or a large group of fish.", enu:"(5)", answers:["SHOAL"],
+       ex:"Double definition: a shoal (shallow water); a shoal (a fish school)."}
+    ],
+    bonus:[
+      {n:1, q:"The world championship of rugby union, held every four years — its trophy honours a founding father.", enu:"(5,5,3)", answers:["WEBB ELLIS CUP","WEBBELLISCUP"],
+       ex:"THE WEBB ELLIS CUP: awarded to the winners of the Rugby World Cup, held every four years. Named after William Webb Ellis, the schoolboy said (in legend) to have first picked up the ball and run with it at Rugby School."},
+      {n:2, q:"South Africa's national side, three-time and four-time world champions — their nickname.", enu:"(11)", answers:["SPRINGBOKS","BOKS"],
+       ex:"THE SPRINGBOKS: the South African national rugby team, among the most successful in World Cup history. Named after the springbok, a native gazelle, which features on their emblem."},
+      {n:3, q:"Ireland, Scotland, Wales and England combine every four years to tour as the ___.", enu:"(7,3,5,5)", answers:["BRITISH AND IRISH LIONS","BRITISH LIONS","LIONS","BRITISH AND IRISH LIONS"],
+       ex:"THE BRITISH AND IRISH LIONS: a composite team drawn from England, Scotland, Wales, and Ireland, who tour the southern hemisphere every four years — one of rugby's greatest traditions."}
+    ]
+  },
+  {
+    id:36, tier:"Savage",
+    hidden:{ answer:"BUCCANEERS", hint:"First letters name the Caribbean raiders of the Spanish Main." },
+    clues:[
+      {n:1, q:"A three-masted sailing vessel — or a dog's warning.", enu:"(4)", answers:["BARK"],
+       ex:"Double definition: a bark (a three-masted sailing vessel); a bark (a dog's call)."},
+      {n:2, q:"Beneath, then a pull — a hidden current that drowns the unwary.", enu:"(8)", answers:["UNDERTOW"],
+       ex:"UNDER (beneath) + TOW (a pull) = UNDERTOW."},
+      {n:3, q:"The anchor chain — or a wire from abroad, or a tenth of a nautical mile.", enu:"(5)", answers:["CABLE"],
+       ex:"Double definition: a cable (the anchor chain; an overseas wire; a distance of one-tenth of a nautical mile)."},
+      {n:4, q:"The anchor chain again — a motif returns, as a pirate's tale repeats. (Echo of clue 3.)", enu:"(5)", answers:["CABLE"],
+       ex:"Double definition: a cable (anchor chain; a wire; a distance). A deliberate reprise."},
+      {n:5, q:"The ship's weight-dropper — or a news presenter.", enu:"(6)", answers:["ANCHOR"],
+       ex:"Double definition: a ship's anchor; a news anchor."},
+      {n:6, q:"The notch at a yard's end — or where a boarding party's arrow rests.", enu:"(4)", answers:["NOCK"],
+       ex:"Double definition: a nock (a yard's notch); a nock (an arrow's notch)."},
+      {n:7, q:"The receding tide — or a steady decline in fortunes.", enu:"(3)", answers:["EBB"],
+       ex:"Double definition: the ebb tide; to ebb (to decline)."},
+      {n:8, q:"A circular back-current — or a swirl in a garden stream.", enu:"(4)", answers:["EDDY"],
+       ex:"Double definition: an eddy (a circular counter-current); an eddy (a swirl in a stream)."},
+      {n:9, q:"Rearrange REINS for a boatbuilder's sealant — fitting for a swashbuckler's grip.", enu:"(5)", answers:["RESIN"],
+       ex:"Anagram of REINS = RESIN, used to seal hulls (and reins being just the thing a raider grips at the helm)."},
+      {n:10, q:"Shallow water — or a large group of fish.", enu:"(5)", answers:["SHOAL"],
+       ex:"Double definition: a shoal (shallow water); a shoal (a fish school)."}
+    ],
+    bonus:[
+      {n:1, q:"The Welsh privateer who became governor of Jamaica — Captain ___.", enu:"(6)", answers:["MORGAN"],
+       ex:"CAPTAIN HENRY MORGAN: the Welsh privateer who raided Spanish possessions across the Caribbean in the 1660s–70s, later knighted and made Lieutenant Governor of Jamaica. A pirate who died respectable — and now sells rum."},
+      {n:2, q:"Robert Louis Stevenson's tale of a map, a mutiny, and Long John Silver: '___ Island'.", enu:"(8)", answers:["TREASURE"],
+       ex:"TREASURE ISLAND (1883): Robert Louis Stevenson's classic tale of buried gold, a mutinous crew, and the one-legged Long John Silver. It shaped almost every pirate cliché we know — the map with an X, the parrot, the black spot."},
+      {n:3, q:"The pirate flag — the skull and crossbones, by its familiar name: the Jolly ___.", enu:"(5)", answers:["ROGER"],
+       ex:"THE JOLLY ROGER: the traditional name for the black pirate flag bearing a skull and crossbones, flown to strike terror and demand surrender. Its name may come from the French 'joli rouge' (pretty red) of earlier blood-red flags."}
+    ]
+  },
+  {
+    id:37, tier:"Proper",
+    hidden:{ answer:"CONVERSION", hint:"First letters name the two points added after a try." },
+    clues:[
+      {n:1, q:"Change your faith — or kick the two points after a try.", enu:"(7)", answers:["CONVERT"],
+       ex:"Double definition: to convert (change one's religion or belief); to convert (kick the ball over the bar after a try, for two extra points)."},
+      {n:2, q:"The shape of a rugby ball — or the famous cricket ground at Kennington.", enu:"(4)", answers:["OVAL"],
+       ex:"Double definition: oval (the egg shape of a rugby ball); the Oval (the Test cricket ground in south London)."},
+      {n:3, q:"The 8 on a forward's back, or the 10 on the fly-half's — a figure either way.", enu:"(6)", answers:["NUMBER"],
+       ex:"Double definition: a number (the figure on a player's shirt — 8 for the No. 8, 10 for the fly-half); a number (any figure)."},
+      {n:4, q:"Compete for the ball — or contend, briefly.", enu:"(3)", answers:["VIE"],
+       ex:"Double definition: to vie (to compete or contend — as two wingers vie for a loose ball)."},
+      {n:5, q:"Win by the odd point — or the sharp side of a forward's boot.", enu:"(4)", answers:["EDGE"],
+       ex:"Double definition: an edge (a narrow margin — 'they won by the odd point, a real edge'); an edge (a sharp border or rim)."},
+      {n:6, q:"Forwards on the floor contesting the ball — or a crease in your shirt.", enu:"(4)", answers:["RUCK"],
+       ex:"Double definition: a ruck (the phase where forwards contest the ball on the ground after a tackle); a ruck (a crease or wrinkle in cloth)."},
+      {n:7, q:"Rearrange CORES for the points tally — or twenty of anything.", enu:"(5)", answers:["SCORE"],
+       ex:"Anagram of CORES = SCORE. Double sense: the score (points tally); a score (twenty — 'threescore years and ten')."},
+      {n:8, q:"The number 12, the crash-ball back — or the interior of anything.", enu:"(6)", answers:["INSIDE"],
+       ex:"Double definition: the inside centre (No. 12, who runs the crash ball); inside (the interior)."},
+      {n:9, q:"Slip the ball out of the tackle — or dump your cargo.", enu:"(7)", answers:["OFFLOAD"],
+       ex:"Double definition: to offload (pass the ball out of a tackle — the mark of a great runner); to offload (to unload or get rid of a burden)."},
+      {n:10, q:"A slim win — or not wide.", enu:"(6)", answers:["NARROW"],
+       ex:"Double definition: a narrow win (by a small margin); narrow (not wide — 'the narrow channel')."}
+    ],
+    bonus:[
+      {n:1, q:"The southern-hemisphere championship of the four great nations — 'The ___ Championship'.", enu:"(3)", answers:["RUGBY"],
+       ex:"THE RUGBY CHAMPIONSHIP: the annual southern-hemisphere tournament contested by New Zealand, Australia, South Africa, and Argentina (formerly the Tri-Nations, before Argentina joined in 2012)."},
+      {n:2, q:"Ireland's home ground, redeveloped and grand — '___ Road'.", enu:"(6)", answers:["LANSDOWNE","AVIVA"],
+       ex:"LANSDOWNE ROAD (now the Aviva Stadium): Ireland's historic rugby ground in Dublin — the oldest international rugby stadium in the world, rebuilt as the Aviva in 2010."},
+      {n:3, q:"Wales's fortress in Cardiff, roof and all — the ___ Stadium.", enu:"(11)", answers:["PRINCIPALITY","MILLENNIUM"],
+       ex:"THE PRINCIPALITY STADIUM (formerly the Millennium Stadium): Wales's national rugby ground in the heart of Cardiff, famous for its closing roof and deafening atmosphere on match day."}
+    ]
+  },
+  {
+    id:38, tier:"Proper",
+    hidden:{ answer:"BACKROWERS", hint:"First letters name the flankers and No. 8 who hunt in the loose." },
+    clues:[
+      {n:1, q:"The three-quarters and full-back — or what a gambler does with his money.", enu:"(5)", answers:["BACKS"],
+       ex:"Double definition: the backs (the players outside the scrum — the running, kicking, try-scoring line); backs (a gambler backs a horse — puts money on)."},
+      {n:2, q:"Ship's weight-dropper — or the tighthead prop who steadies the scrum.", enu:"(6)", answers:["ANCHOR"],
+       ex:"Double definition: a ship's anchor; the 'anchor' of a scrum (the tighthead prop, around whom the scrum is built)."},
+      {n:3, q:"Rearrange RECENT for the midfield back who runs the crash ball.", enu:"(6)", answers:["CENTRE"],
+       ex:"Anagram of RECENT = CENTRE — the inside or outside centre (Nos. 12 and 13), the midfield backs."},
+      {n:4, q:"Boot the ball downfield — or a thrill, informally.", enu:"(4)", answers:["KICK"],
+       ex:"Double definition: to kick (boot the ball — for territory, at goal, or into touch); a kick (a thrill — 'he gets a kick out of it')."},
+      {n:5, q:"Forwards contesting on the ground — or a crease in cloth.", enu:"(4)", answers:["RUCK"],
+       ex:"Double definition: a ruck (forwards contesting the ball on the ground); a ruck (a wrinkle or crease)."},
+      {n:6, q:"The shape of the ball — or the Kennington cricket ground.", enu:"(4)", answers:["OVAL"],
+       ex:"Double definition: oval (the shape of a rugby ball); the Oval (London Test cricket ground)."},
+      {n:7, q:"The flyer out wide — or to improvise without a plan.", enu:"(4)", answers:["WING"],
+       ex:"Double definition: the wing (the fast player on the flank, Nos. 11 and 14); to wing it (to improvise — 'we'll just have to wing it')."},
+      {n:8, q:"Win by a whisker — or the blade of a forward's boot.", enu:"(4)", answers:["EDGE"],
+       ex:"Double definition: an edge (a narrow winning margin); an edge (a sharp rim or border)."},
+      {n:9, q:"Take a breather — or the remainder of the squad on the bench.", enu:"(4)", answers:["REST"],
+       ex:"Double definition: to rest (take a breather — as a star is rested for a big match); the rest (the remainder — 'the rest of the squad')."},
+      {n:10, q:"The opposing teams — or the flanks of the field.", enu:"(5)", answers:["SIDES"],
+       ex:"Double definition: sides (the two teams — 'both sides played well'); sides (the flanks — the touchline edges of the pitch)."}
+    ],
+    bonus:[
+      {n:1, q:"The No. 8, who binds at the base of the scrum and drives from it — his position by number.", enu:"(3,5)", answers:["NUMBER EIGHT","NO 8","EIGHT"],
+       ex:"NUMBER EIGHT: the forward who packs down at the rear of the scrum, controls the ball at its base, and links forwards to backs. One of the game's most dynamic roles."},
+      {n:2, q:"The open-side and blind-side forwards who tackle and pilfer — their position.", enu:"(7)", answers:["FLANKER"],
+       ex:"FLANKER: the back-row forwards (Nos. 6 and 7) who bind on the sides of the scrum, first to the breakdown, tasked with tackling and winning turnovers. The great pilferers of the game."},
+      {n:3, q:"The contest for a ball thrown in from touch, with lifters and jumpers.", enu:"(7)", answers:["LINEOUT","LINE-OUT"],
+       ex:"LINEOUT: the means of restarting play after the ball goes into touch — forwards line up and lift a jumper to catch the ball thrown in straight down the middle."}
+    ]
+  },
+  {
+    id:39, tier:"Savage",
+    hidden:{ answer:"DROPKICKER", hint:"First letters name the man who wins the match with his boot." },
+    clues:[
+      {n:1, q:"Rearrange PROD for the goal Jonny Wilkinson kicked to win a World Cup.", enu:"(4)", answers:["DROP"],
+       ex:"Anagram of PROD = DROP. A drop goal (worth three points, kicked from open play) won England the 2003 World Cup — Jonny Wilkinson's famous strike in extra time."},
+      {n:2, q:"Forwards on the floor over the ball — or a wrinkle in your shirt.", enu:"(4)", answers:["RUCK"],
+       ex:"Double definition: a ruck (the ground contest for the ball); a ruck (a crease or wrinkle)."},
+      {n:3, q:"The shape of the ball — or egg-like.", enu:"(4)", answers:["OVAL"],
+       ex:"Double definition: oval (the ball's shape); oval (egg-shaped)."},
+      {n:4, q:"The eight forwards as one unit — or what a wolf runs in.", enu:"(4)", answers:["PACK"],
+       ex:"Double definition: the pack (the eight forwards, who scrummage and drive together); a pack (a group — as of wolves or cards)."},
+      {n:5, q:"Boot the ball — or a jolt of excitement.", enu:"(4)", answers:["KICK"],
+       ex:"Double definition: to kick (boot the ball); a kick (a thrill or jolt)."},
+      {n:6, q:"The No. 12 who runs the crash ball — or the interior.", enu:"(6)", answers:["INSIDE"],
+       ex:"Double definition: inside centre (No. 12); inside (the interior)."},
+      {n:7, q:"Kick the two points after a try — or change your allegiance.", enu:"(7)", answers:["CONVERT"],
+       ex:"Double definition: to convert (kick the conversion after a try); to convert (change belief or allegiance)."},
+      {n:8, q:"The forward fumble that loses your side the put-in — the cardinal sin.", enu:"(6,2)", answers:["KNOCK ON","KNOCKON","KNOCK-ON"],
+       ex:"KNOCK-ON: dropping or knocking the ball forward with hand or arm — a technical offence that hands the opposition a scrum. The most common error in the game."},
+      {n:9, q:"Win by a whisker — or a blade's fine border.", enu:"(4)", answers:["EDGE"],
+       ex:"Double definition: an edge (a narrow winning margin); an edge (a sharp border)."},
+      {n:10, q:"The man with the whistle — or to officiate, for short.", enu:"(3)", answers:["REF"],
+       ex:"Double definition: the ref (the referee, sole judge of play); to ref (to officiate a match)."}
+    ],
+    bonus:[
+      {n:1, q:"The England fly-half whose drop goal won the 2003 World Cup — his surname.", enu:"(9)", answers:["WILKINSON"],
+       ex:"JONNY WILKINSON: the England fly-half whose last-minute drop goal in extra time won the 2003 Rugby World Cup final against Australia in Sydney — the defining moment of English rugby."},
+      {n:2, q:"The New Zealand fly-half and points machine of the 2010s, twice world champion — his surname.", enu:"(6)", answers:["CARTER"],
+       ex:"DAN CARTER: the great All Black fly-half, the leading points scorer in Test history for many years, and twice a Rugby World Cup winner (2011, 2015). Widely regarded as the finest No. 10 to play the game."},
+      {n:3, q:"The three-pointer awarded for an infringement, kicked at goal — the ___ kick.", enu:"(7)", answers:["PENALTY"],
+       ex:"PENALTY KICK: awarded for an infringement, it may be kicked at goal for three points, kicked to touch to gain territory, or tapped and run. A reliable goal-kicker makes penalties a fearsome weapon."}
+    ]
+  },
+  {
+    id:40, tier:"Savage",
+    hidden:{ answer:"TOUCHDOWNS", hint:"First letters name the act of grounding the ball over the line." },
+    clues:[
+      {n:1, q:"Bring the runner down — or the rods and reels in an angler's bag.", enu:"(6)", answers:["TACKLE"],
+       ex:"Double definition: to tackle (bring down the ball-carrier — the game's fundamental skill); tackle (an angler's rods, reels, and gear)."},
+      {n:2, q:"The shape of the ball — or the Kennington cricket ground.", enu:"(4)", answers:["OVAL"],
+       ex:"Double definition: oval (the ball's egg shape); the Oval (London Test cricket ground)."},
+      {n:3, q:"The goalposts' vertical timbers — or an honest, decent sort.", enu:"(8)", answers:["UPRIGHTS"],
+       ex:"Double definition: the uprights (the vertical posts of the goal, between which the ball must pass); upright (honest and morally sound — 'an upright citizen')."},
+      {n:4, q:"Kick the two points — or change your faith.", enu:"(7)", answers:["CONVERT"],
+       ex:"Double definition: to convert (kick the conversion after a try); to convert (change belief)."},
+      {n:5, q:"The front-row man who strikes for the ball — or one who lands a big fish.", enu:"(6)", answers:["HOOKER"],
+       ex:"Double definition: the hooker (the front-row forward, No. 2, who 'hooks' the ball back in the scrum and throws in at the lineout); a hooker (one who hooks — as an angler who hooks a fish)."},
+      {n:6, q:"Rearrange PROD for the three-point kick from open play.", enu:"(4)", answers:["DROP"],
+       ex:"Anagram of PROD = DROP. The drop goal (a ball dropped and kicked on the half-volley, worth three points from open play)."},
+      {n:7, q:"Slip the ball away in the tackle — or dump a burden.", enu:"(7)", answers:["OFFLOAD"],
+       ex:"Double definition: to offload (pass out of a tackle); to offload (get rid of a burden)."},
+      {n:8, q:"The wide flyer — or a part of a great house.", enu:"(4)", answers:["WING"],
+       ex:"Double definition: the wing (the flank player, Nos. 11 and 14); a wing (a section of a large building — 'the west wing')."},
+      {n:9, q:"The figure on a shirt — 2 for the hooker, 15 for the full-back.", enu:"(6)", answers:["NUMBER"],
+       ex:"Double definition: a number (the figure on a player's shirt, denoting his position); a number (any figure)."},
+      {n:10, q:"Rearrange CORES for the running tally of points — or twenty.", enu:"(5)", answers:["SCORE"],
+       ex:"Anagram of CORES = SCORE. The score (points tally); a score (twenty)."}
+    ],
+    bonus:[
+      {n:1, q:"To ground the ball over the opponents' line for five points — the ultimate aim.", enu:"(3)", answers:["TRY"],
+       ex:"TRY: worth five points, scored by grounding the ball over the opponents' goal line. The name is a relic of the era when the score itself counted for nothing but earned a 'try' at goal — the kick was everything."},
+      {n:2, q:"England's cathedral of rugby in south-west London — 'HQ'.", enu:"(11)", answers:["TWICKENHAM"],
+       ex:"TWICKENHAM: the home of English rugby in south-west London, known simply as 'Twickers' or 'HQ' — the largest dedicated rugby union stadium in the world, built on a former cabbage patch."},
+      {n:3, q:"The three-quarter closest to the forwards, wearing 12 or 13 — his position.", enu:"(6)", answers:["CENTRE"],
+       ex:"CENTRE: the midfield backs (Nos. 12 and 13) — the inside centre a battering runner and distributor, the outside centre a creator of space and breaker of lines. The engine room of the back line."}
+    ]
   }
 ];
 
@@ -1099,6 +1748,7 @@ function renderPuzzle(){
       <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap">
         <span class="puzzle-id">Keithogram ${currentPuzzleNumberLabel(k)}</span>
         <span class="tier ${k.tier.toLowerCase()}">${k.tier}</span>
+        <span class="counter">${idx+1} of ${KEITHOGRAMS.length}</span>
       </div>
       <div class="nav">
         <button class="btn" id="navPrev">‹ Previous</button>
@@ -1410,12 +2060,13 @@ function refreshBoards(){
   const agg = aggregate(allRows());
 
   // League: by best, then avg, then done
-  const league=[...agg].sort((a,b)=> b.best-a.best || b.avg-a.avg || b.done-a.done);
+  // Rank: most PERFECT (10/10) puzzles first, then best score, then average, then most done
+  const league=[...agg].sort((a,b)=> b.perfect-a.perfect || b.best-a.best || b.avg-a.avg || b.done-a.done);
   const lb=document.getElementById("leagueBody");
   lb.innerHTML = league.length? league.map((p,i)=>`
     <tr class="${p.name===me?'me':''} ${p.name==='Keith'?'keith':''}">
-      <td class="n">${i+1}</td><td>${esc(p.name)}</td><td class="n">${p.done}</td>
-      <td class="n">${p.avg.toFixed(1)}</td><td class="n">${p.best}</td><td class="n">${p.perfect||"—"}</td>
+      <td class="n">${i+1}</td><td>${esc(p.name)}</td><td class="n lead">${p.perfect||"—"}</td>
+      <td class="n">${p.best}</td><td class="n">${p.avg.toFixed(1)}</td><td class="n">${p.done}</td>
     </tr>`).join("") : `<tr><td colspan="6" class="empty">No scores yet. Put the kettle on.</td></tr>`;
 
   // championship line
